@@ -34,7 +34,7 @@ export default function AppNavbar() {
         <Link href="/" className="text-2xl md:text-3xl text-primary font-tan-meringue flex items-center">
           <span className="w-7 h-7 mr-2 inline-block align-middle">
   <img
-    src="https://i.ibb.co/8jNrYXn/image.png" // replace with the actual image URL
+    src="https://ibb.co/Lh1dyR3r" // replace with the actual image URL
     alt="icon"
     className="w-full h-full object-contain"
   />
