@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -31,7 +30,7 @@ export default function AppNavbar() {
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl md:text-3xl text-primary font-['Pacifico'] flex items-center">
+        <Link href="/" className="text-2xl md:text-3xl text-primary font-tan-meringue flex items-center">
           <Gem className="w-7 h-7 mr-2" />
           Nanhi Sunheri
         </Link>
@@ -64,7 +63,7 @@ export default function AppNavbar() {
             <SheetContent side="right" className="w-[280px] bg-background p-6">
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
-                 <Link href="/" className="text-2xl text-primary font-['Pacifico'] flex items-center">
+                 <Link href="/" className="text-2xl text-primary font-tan-meringue flex items-center">
                     <Gem className="w-6 h-6 mr-2" />
                     Nanhi Sunheri
                   </Link>
