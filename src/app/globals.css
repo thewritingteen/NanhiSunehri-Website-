@@ -11,25 +11,14 @@ body {
   1. Add the font files (e.g., .woff2, .ttf) to your project, typically in a `public/fonts` directory.
   2. Uncomment and update the @font-face rule below to point to your font files.
 */
-/*
+
 @font-face {
   font-family: 'Tan Meringue';
-  src: url('/fonts/TanMeringue-Regular.woff2') format('woff2'), 
-       url('/fonts/TanMeringue-Regular.woff') format('woff');
+  src: url('/fonts/TAN%20MERINGUE.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: 'Tan Meringue';
-  src: url('/fonts/TanMeringue-Bold.woff2') format('woff2'),
-       url('/fonts/TanMeringue-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-*/
 
 @layer base {
   :root {
