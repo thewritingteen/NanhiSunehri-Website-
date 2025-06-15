@@ -1,8 +1,9 @@
+
 "use client";
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, Gem } from 'lucide-react';
+import { Menu, X } from 'lucide-react'; // Gem removed
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 
@@ -31,7 +32,7 @@ export default function AppNavbar() {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="text-2xl md:text-3xl text-primary font-tan-meringue flex items-center">
-          <Gem className="w-7 h-7 mr-2" />
+          <span className="w-7 h-7 mr-2 inline-block align-middle">{/* Your Logo SVG/Image Here */}</span>
           Nanhi Sunheri
         </Link>
         
@@ -64,7 +65,7 @@ export default function AppNavbar() {
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                  <Link href="/" className="text-2xl text-primary font-tan-meringue flex items-center">
-                    <Gem className="w-6 h-6 mr-2" />
+                    <span className="w-6 h-6 mr-2 inline-block align-middle">{/* Your Logo SVG/Image Here */}</span>
                     Nanhi Sunheri
                   </Link>
                   <SheetClose asChild>
