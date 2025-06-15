@@ -32,13 +32,14 @@ export default function AppNavbar() {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="text-2xl md:text-3xl text-primary font-tan-meringue flex items-center">
-          <span className="w-7 h-7 mr-2 inline-block align-middle">
+        <span className="w-7 h-7 mr-2 inline-block align-middle">
   <img
-    src="https://drive.google.com/file/d/1U-tteV0z6Nm4ayu7TJV4nxROX8feKxT_/view?usp=sharing" // replace with the actual image URL
+    src="/images/my-icon.png"
     alt="icon"
     className="w-full h-full object-contain"
   />
 </span>
+
           Nanhi Sunheri
         </Link>
         
