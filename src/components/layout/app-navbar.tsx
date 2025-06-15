@@ -32,7 +32,7 @@ export default function AppNavbar() {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="text-2xl md:text-3xl text-primary font-tan-meringue flex items-center">
-       <span className="w-10 h-10 mr-2 inline-block align-middle">
+       <span className="w-10 h-10 mr-2 inline-block ">
   <img
     src="/images/logo.png"
     alt="Logo"
@@ -41,7 +41,7 @@ export default function AppNavbar() {
 </span>
 
 
-          Nanhi Sunheri
+          Nanhi Sunehri
         </Link>
         
         <nav className="hidden md:flex items-center space-x-6">
