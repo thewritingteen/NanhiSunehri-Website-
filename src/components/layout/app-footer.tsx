@@ -1,5 +1,6 @@
+
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Youtube, CreditCard, Gem } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, CreditCard } from 'lucide-react'; // Gem removed
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
@@ -33,7 +34,7 @@ export default function AppFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <Link href="/" className="text-3xl font-tan-meringue text-primary mb-4 block flex items-center">
-              <Gem className="w-8 h-8 mr-2"/>
+              <span className="w-8 h-8 mr-2 inline-block align-middle">{/* Your Logo SVG/Image Here */}</span>
               Nanhi Sunheri
             </Link>
             <p className="text-background/70 mb-6 text-sm">Aapki nanhi jaan ke liye sunheri virasaat.</p>
