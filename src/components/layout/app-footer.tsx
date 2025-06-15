@@ -34,14 +34,14 @@ export default function AppFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <Link href="/" className="text-3xl font-tan-meringue text-primary mb-4 block flex items-center">
-                <span className="w-7 h-7 mr-2 inline-block align-middle">
+                <span className="w-10 h-10 mr-2 inline-block align-middle">
   <img
     src="/images/logo.png"
     alt="Logo"
     className="w-full h-full object-contain"
   />
 </span>
-              Nanhi Sunheri
+              Nanhi Sunehri
             </Link>
             <p className="text-background/70 mb-6 text-sm">Aapki nanhi jaan ke liye sunheri virasaat.</p>
             <div className="flex space-x-3">
