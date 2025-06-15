@@ -32,7 +32,7 @@ export default function AppFooter() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <Link href="/" className="text-3xl font-['Pacifico'] text-primary mb-4 block flex items-center">
+            <Link href="/" className="text-3xl font-tan-meringue text-primary mb-4 block flex items-center">
               <Gem className="w-8 h-8 mr-2"/>
               Nanhi Sunheri
             </Link>
