@@ -20,6 +20,7 @@ export default {
         body: ['PT Sans', 'sans-serif'],
         headline: ['Playfair Display', 'serif'],
         code: ['monospace'],
+        'tan-meringue': ['"Tan Meringue"', 'cursive'],
       },
       colors: {
         background: 'hsl(var(--background))',
