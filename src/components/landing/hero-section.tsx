@@ -16,13 +16,13 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-transparent" />
       <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
         <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">Nanhi Tijori in Gold, <span className="text-primary">Gift a Legacy</span></h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">Invest in Gold, <span className="text-primary">Gift a Legacy</span></h1>
           <p className="text-lg md:text-xl mb-8 text-muted-foreground max-w-xl">
             A future-ready way to secure your child's tomorrow — with memories that last a lifetime. Build wealth and create meaningful sunheri virasaat.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" asChild className="shadow-lg">
-              <Link href="/#investment">Start Nanhi Tijori</Link>
+              <Link href="/#investment">Start Investing Now</Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="shadow-lg">
               <Link href="/gift">Gift Gold</Link>
