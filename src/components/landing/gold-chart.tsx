@@ -27,9 +27,9 @@ export default function GoldChart() {
             padding: 10,
           },
           grid: {
-            left: '10%',  // increased left padding so labels don't clip
+            left: '10%',
             right: '10%',
-            bottom: '15%', // more bottom padding to prevent clipping x-axis labels
+            bottom: '15%',
             top: '15%',
             containLabel: true,
           },
@@ -116,9 +116,9 @@ export default function GoldChart() {
       className="rounded-2xl shadow-lg p-6 bg-[#FAF3E9]"
       style={{
         width: '100%',
-        maxWidth: '700px', // limit max width so it doesn’t stretch too far on big screens
+        maxWidth: '700px',
         height: '420px',
-        margin: '0 auto',  // center horizontally
+        margin: '0 auto',
         boxSizing: 'border-box',
         overflow: 'hidden',
         display: 'flex',
@@ -137,7 +137,7 @@ export default function GoldChart() {
           flexGrow: 1,
           width: '100%',
           height: '100%',
-          minHeight: 0, // allow flex container to constrain height
+          minHeight: 0,
         }}
       />
     </div>
