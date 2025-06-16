@@ -5,169 +5,151 @@ import type { EChartsOption, ECharts } from 'echarts';
 import { init } from 'echarts';
 
 export default function GoldChart() {
+  // Ref to attach the ECharts instance to
   const chartRef = useRef<HTMLDivElement>(null);
-  const chartInstance = useRef<ECharts | null>(null); // Use a ref to store the chart instance
+  // Ref to store the ECharts instance itself
+  const chartInstance = useRef<ECharts | null>(null);
 
   useEffect(() => {
     const initializeChart = () => {
+      // Ensure the chart container div is available
       if (chartRef.current) {
-        // Dispose of existing chart instance if it exists (for hot reloading/re-renders)
+        // Dispose of any existing chart instance to prevent memory leaks and re-initialization issues
         if (chartInstance.current) {
           chartInstance.current.dispose();
         }
 
-        // Initialize ECharts
+        // Initialize ECharts on the current div reference.
+        // Using 'light' theme and 'svg' renderer for potentially better performance/resolution.
         chartInstance.current = init(chartRef.current, 'light', { renderer: 'svg' });
 
+        // Define the ECharts options for the line chart
         const option: EChartsOption = {
+          // Tooltip configuration for displaying data on hover
           tooltip: {
-            trigger: 'axis',
-            backgroundColor: '#FAF3E9',
-            borderColor: '#DFC58A',
+            trigger: 'axis', // Show tooltip when hovering over the axis
+            backgroundColor: 'rgba(250, 243, 233, 0.9)', // Slightly transparent background for the tooltip
+            borderColor: '#DFC58A', // Border color matching the gold theme
             borderWidth: 1,
             textStyle: {
-              color: '#3E2723',
-              fontFamily: 'Arial, Helvetica, sans-serif',
+              color: '#3E2723', // Dark text for readability
+              fontFamily: 'Inter, sans-serif', // Using Inter font as per guidelines
             },
-            padding: 10,
+            padding: 10, // Padding inside the tooltip box
           },
-          // Optimized grid for better fitting
+          // Grid configuration to control the chart's position within its container
           grid: {
-            left: '3%', // Reduced left margin
-            right: '4%', // Reduced right margin slightly
-            bottom: '3%', // Reduced bottom margin
-            top: '15%', // Keep top for title/legend if present, otherwise can reduce
-            containLabel: true, // Crucial: ensures axis labels are within the grid area
+            left: '3%',    // Reduced left margin
+            right: '4%',   // Reduced right margin
+            bottom: '3%',  // Reduced bottom margin
+            top: '5%',     // Reduced top margin significantly as there's no title/legend above
+            containLabel: true, // Ensures axis labels are fully contained within the grid area
           },
+          // X-axis configuration (category type for months)
           xAxis: {
             type: 'category',
-            boundaryGap: false,
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            axisLine: { lineStyle: { color: '#DFC58A', width: 1.2 } },
+            boundaryGap: false, // Ensures the line starts/ends at the very edge of the axis
+            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // Monthly data points
+            axisLine: { lineStyle: { color: '#DFC58A', width: 1.2 } }, // Styling for the X-axis line
             axisLabel: {
-              color: '#BA8759',
-              fontFamily: 'Arial, Helvetica, sans-serif',
-              margin: 10,
+              color: '#BA8759', // Color of X-axis labels
+              fontFamily: 'Inter, sans-serif', // Using Inter font
+              margin: 10, // Margin between labels and axis line
             },
           },
+          // Y-axis configuration (value type for prices)
           yAxis: {
             type: 'value',
-            axisLine: { show: false },
-            axisTick: { show: false },
-            splitLine: { lineStyle: { color: '#F3E9D2', type: 'dashed' } },
+            axisLine: { show: false }, // Hide the Y-axis line
+            axisTick: { show: false }, // Hide Y-axis ticks
+            splitLine: { lineStyle: { color: '#F3E9D2', type: 'dashed' } }, // Dashed split lines for the grid
             axisLabel: {
-              formatter: '₹{value}',
-              color: '#BA8759',
-              fontFamily: 'Arial, Helvetica, sans-serif',
-              margin: 10,
+              formatter: '₹{value}', // Formats Y-axis labels with Rupee symbol
+              color: '#BA8759', // Color of Y-axis labels
+              fontFamily: 'Inter, sans-serif', // Using Inter font
+              margin: 10, // Margin between labels and axis line
             },
           },
+          // Series configuration for the gold price line
           series: [
             {
-              name: 'Gold Price (per gram)',
-              type: 'line',
-              smooth: true,
-              symbol: 'circle',
-              symbolSize: 6,
+              name: 'Gold Price (per gram)', // Name of the series
+              type: 'line', // Line chart type
+              smooth: true, // Smooth line interpolation
+              symbol: 'circle', // Circle markers at data points
+              symbolSize: 6, // Size of the markers
               lineStyle: {
                 width: 3,
-                color: '#DFC58A',
+                color: '#DFC58A', // Color of the line
               },
               itemStyle: {
-                color: '#BA8759',
-                borderColor: '#FAF3E9',
+                color: '#BA8759', // Color of the markers
+                borderColor: '#FAF3E9', // Border color for markers
                 borderWidth: 2,
               },
               areaStyle: {
+                // Gradient fill under the line
                 color: {
                   type: 'linear',
-                  x: 0, y: 0, x2: 0, y2: 1,
+                  x: 0, y: 0, x2: 0, y2: 1, // Vertical gradient
                   colorStops: [
-                    { offset: 0, color: '#DFC58A66' },
-                    { offset: 1, color: '#FAF3E911' }
+                    { offset: 0, color: '#DFC58A66' }, // Top color (with transparency)
+                    { offset: 1, color: '#FAF3E911' }  // Bottom color (more transparent)
                   ],
                 },
               },
+              // Sample data for gold prices
               data: [5800, 5850, 5900, 6100, 6050, 6200, 6300, 6250, 6400, 6500, 6450, 6600],
             },
           ],
-          animationDuration: 1200,
-          animationEasing: 'cubicOut',
-          // Add this property to make ECharts automatically resize
-          // This ensures the chart adapts to the exact size of its container
-          // on initialization and subsequent resizes
-          // The `autoresize` property is not a direct ECharts option for `setOption`
-          // but rather an internal behavior when `chart.resize()` is called,
-          // or if the container itself changes size.
-          // The key is to ensure the container itself has fixed or constrained dimensions.
+          animationDuration: 1200, // Animation duration for chart appearance
+          animationEasing: 'cubicOut', // Easing function for animation
         };
 
+        // Set the defined options to the chart instance
         chartInstance.current.setOption(option);
-        // Manually resize chart immediately after setting options if needed,
-        // to ensure it takes the current container size.
+        // Manually resize the chart to fit its current container size immediately after setting options
         chartInstance.current.resize();
       }
     };
 
-    // Use a more robust check for window
+    // Ensure window object is defined before interacting with it (for Next.js 'use client')
     if (typeof window !== 'undefined') {
+      // Dynamically import ECharts to reduce initial bundle size
       import('echarts').then(() => {
-        initializeChart();
+        initializeChart(); // Initialize the chart once ECharts is loaded
       }).catch((err) => {
-        console.error("Failed to load ECharts", err);
+        console.error("Failed to load ECharts", err); // Log error if ECharts fails to load
       });
 
+      // Function to resize the chart when the window is resized
       const resizeChart = () => {
         chartInstance.current?.resize();
       };
 
+      // Add event listener for window resize
       window.addEventListener('resize', resizeChart);
 
+      // Cleanup function:
+      // This runs when the component unmounts or before the effect re-runs.
       return () => {
-        chartInstance.current?.dispose();
-        window.removeEventListener('resize', resizeChart);
+        chartInstance.current?.dispose(); // Dispose of the chart instance to clean up resources
+        window.removeEventListener('resize', resizeChart); // Remove the resize event listener
       };
     }
-  }, []);
+  }, []); // Empty dependency array ensures this effect runs only once after initial render
 
   return (
+    // The main container for the chart.
+    // It now directly styles the chart area without a surrounding 'white box'.
     <div
-      className="rounded-2xl shadow-lg p-6 bg-[#FAF3E9]"
+      ref={chartRef} // Attach the ref to this div for ECharts to render into
+      className="w-full flex-grow" // Take full width and allow it to grow in a flex container
       style={{
-        width: '100%',
-        maxWidth: '700px',
-        // Important: Adjust height considering padding and title height
-        // Outer height (420px) - padding (2 * 24px) - title height (~28px + 16px mb)
-        // Let's make the height of the outer div fit its content
-        // and let the flex grow handle the chart div.
-        // OR, if you want a fixed overall height for the white box:
-        height: '420px', // Keep fixed height for the outer box
-        margin: '0 auto',
-        boxSizing: 'border-box',
-        overflow: 'hidden', // This will clip any overflow from the white box
-        display: 'flex',
-        flexDirection: 'column',
+        minHeight: '300px', // Ensures the chart has a minimum height to be visible
+        // You can adjust this height as needed.
+        // For a fixed height, you could use 'height: 400px' instead of minHeight.
       }}
-    >
-      <div
-        className="text-xl font-semibold mb-4 text-[#3E2723]"
-        style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-      >
-        📈 Gold Price Trend - 2025
-      </div>
-      <div
-        ref={chartRef}
-        style={{
-          flexGrow: 1, // Takes up remaining space
-          width: '100%',
-          // Important: Explicitly set height to 100% so ECharts knows its boundary.
-          // This 100% is relative to the *remaining* height available in the flex container.
-          height: '100%',
-          minHeight: 0, // Prevents flex item from exceeding container if content is too large
-          // Add overflow hidden here as well, just in case ECharts renders something outside.
-          overflow: 'hidden',
-        }}
-      />
-    </div>
+    />
   );
 }
