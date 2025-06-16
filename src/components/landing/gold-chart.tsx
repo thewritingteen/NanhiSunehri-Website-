@@ -18,7 +18,7 @@ export default function GoldChart() {
         const option: EChartsOption = {
           tooltip: {
             trigger: 'axis',
-            backgroundColor: '#FFF8F0',
+            backgroundColor: '#FAF3E9', // beige
             borderColor: '#DFC58A',
             borderWidth: 1,
             textStyle: {
