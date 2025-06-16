@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 import type { EChartsOption, ECharts } from 'echarts';
 import { init } from 'echarts';
-import { motion } from 'framer-motion';
 
 export default function GoldChart() {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -18,20 +17,20 @@ export default function GoldChart() {
         const option: EChartsOption = {
           tooltip: {
             trigger: 'axis',
-            backgroundColor: '#FAF3E9', // beige
+            backgroundColor: '#FAF3E9',
             borderColor: '#DFC58A',
             borderWidth: 1,
             textStyle: {
               color: '#3E2723',
-              fontFamily: 'Tan Meringue, serif',
+              fontFamily: 'Arial, Helvetica, sans-serif',
             },
             padding: 10,
           },
           grid: {
-            left: '5%',
-            right: '5%',
-            bottom: '5%',
-            top: '10%',
+            left: '10%',  // increased left padding so labels don't clip
+            right: '10%',
+            bottom: '15%', // more bottom padding to prevent clipping x-axis labels
+            top: '15%',
             containLabel: true,
           },
           xAxis: {
@@ -41,7 +40,8 @@ export default function GoldChart() {
             axisLine: { lineStyle: { color: '#DFC58A', width: 1.2 } },
             axisLabel: {
               color: '#BA8759',
-              fontFamily: 'Tan Meringue, serif',
+              fontFamily: 'Arial, Helvetica, sans-serif',
+              margin: 10,
             },
           },
           yAxis: {
@@ -52,7 +52,8 @@ export default function GoldChart() {
             axisLabel: {
               formatter: '₹{value}',
               color: '#BA8759',
-              fontFamily: 'Tan Meringue, serif',
+              fontFamily: 'Arial, Helvetica, sans-serif',
+              margin: 10,
             },
           },
           series: [
@@ -110,14 +111,35 @@ export default function GoldChart() {
     };
   }, []);
 
-return (
-  <div
-    className="rounded-2xl shadow-lg p-4 bg-[#FAF3E9]"
-    style={{ width: '100%', height: '400px' }}
-  >
-    <div className="text-xl font-semibold mb-4 text-[#3E2723] font-[Tan Meringue]">
-      📈 Gold Price Trend - 2025
+  return (
+    <div
+      className="rounded-2xl shadow-lg p-6 bg-[#FAF3E9]"
+      style={{
+        width: '100%',
+        maxWidth: '700px', // limit max width so it doesn’t stretch too far on big screens
+        height: '420px',
+        margin: '0 auto',  // center horizontally
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <div
+        className="text-xl font-semibold mb-4 text-[#3E2723]"
+        style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+      >
+        📈 Gold Price Trend - 2025
+      </div>
+      <div
+        ref={chartRef}
+        style={{
+          flexGrow: 1,
+          width: '100%',
+          height: '100%',
+          minHeight: 0, // allow flex container to constrain height
+        }}
+      />
     </div>
-    <div ref={chartRef} style={{ width: '100%', height: '100%' }} />
-  </div>
-);
+  );
+}
