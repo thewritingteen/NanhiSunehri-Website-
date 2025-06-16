@@ -6,13 +6,18 @@ import { init } from 'echarts';
 
 export default function GoldChart() {
   const chartRef = useRef<HTMLDivElement>(null);
+  const chartInstance = useRef<ECharts | null>(null); // Use a ref to store the chart instance
 
   useEffect(() => {
-    let chart: ECharts | undefined;
-
     const initializeChart = () => {
       if (chartRef.current) {
-        chart = init(chartRef.current, 'light', { renderer: 'svg' });
+        // Dispose of existing chart instance if it exists (for hot reloading/re-renders)
+        if (chartInstance.current) {
+          chartInstance.current.dispose();
+        }
+
+        // Initialize ECharts
+        chartInstance.current = init(chartRef.current, 'light', { renderer: 'svg' });
 
         const option: EChartsOption = {
           tooltip: {
@@ -26,12 +31,13 @@ export default function GoldChart() {
             },
             padding: 10,
           },
+          // Optimized grid for better fitting
           grid: {
-            left: '10%',
-            right: '10%',
-            bottom: '15%',
-            top: '15%',
-            containLabel: true,
+            left: '3%', // Reduced left margin
+            right: '4%', // Reduced right margin slightly
+            bottom: '3%', // Reduced bottom margin
+            top: '15%', // Keep top for title/legend if present, otherwise can reduce
+            containLabel: true, // Crucial: ensures axis labels are within the grid area
           },
           xAxis: {
             type: 'category',
@@ -87,28 +93,41 @@ export default function GoldChart() {
           ],
           animationDuration: 1200,
           animationEasing: 'cubicOut',
+          // Add this property to make ECharts automatically resize
+          // This ensures the chart adapts to the exact size of its container
+          // on initialization and subsequent resizes
+          // The `autoresize` property is not a direct ECharts option for `setOption`
+          // but rather an internal behavior when `chart.resize()` is called,
+          // or if the container itself changes size.
+          // The key is to ensure the container itself has fixed or constrained dimensions.
         };
 
-        chart.setOption(option);
+        chartInstance.current.setOption(option);
+        // Manually resize chart immediately after setting options if needed,
+        // to ensure it takes the current container size.
+        chartInstance.current.resize();
       }
     };
 
-    import('echarts').then(() => {
-      initializeChart();
-    }).catch((err) => {
-      console.error("Failed to load ECharts", err);
-    });
+    // Use a more robust check for window
+    if (typeof window !== 'undefined') {
+      import('echarts').then(() => {
+        initializeChart();
+      }).catch((err) => {
+        console.error("Failed to load ECharts", err);
+      });
 
-    const resizeChart = () => {
-      chart?.resize();
-    };
+      const resizeChart = () => {
+        chartInstance.current?.resize();
+      };
 
-    window.addEventListener('resize', resizeChart);
+      window.addEventListener('resize', resizeChart);
 
-    return () => {
-      chart?.dispose();
-      window.removeEventListener('resize', resizeChart);
-    };
+      return () => {
+        chartInstance.current?.dispose();
+        window.removeEventListener('resize', resizeChart);
+      };
+    }
   }, []);
 
   return (
@@ -117,10 +136,15 @@ export default function GoldChart() {
       style={{
         width: '100%',
         maxWidth: '700px',
-        height: '420px',
+        // Important: Adjust height considering padding and title height
+        // Outer height (420px) - padding (2 * 24px) - title height (~28px + 16px mb)
+        // Let's make the height of the outer div fit its content
+        // and let the flex grow handle the chart div.
+        // OR, if you want a fixed overall height for the white box:
+        height: '420px', // Keep fixed height for the outer box
         margin: '0 auto',
         boxSizing: 'border-box',
-        overflow: 'hidden',
+        overflow: 'hidden', // This will clip any overflow from the white box
         display: 'flex',
         flexDirection: 'column',
       }}
@@ -134,10 +158,14 @@ export default function GoldChart() {
       <div
         ref={chartRef}
         style={{
-          flexGrow: 1,
+          flexGrow: 1, // Takes up remaining space
           width: '100%',
+          // Important: Explicitly set height to 100% so ECharts knows its boundary.
+          // This 100% is relative to the *remaining* height available in the flex container.
           height: '100%',
-          minHeight: 0,
+          minHeight: 0, // Prevents flex item from exceeding container if content is too large
+          // Add overflow hidden here as well, just in case ECharts renders something outside.
+          overflow: 'hidden',
         }}
       />
     </div>
