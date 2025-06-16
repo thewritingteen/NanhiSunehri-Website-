@@ -110,18 +110,14 @@ export default function GoldChart() {
     };
   }, []);
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="rounded-2xl shadow-lg p-4 bg-[#FAF3E9]"
-      style={{ width: '100%', height: '400px' }}
-    >
-      <div className="text-xl font-semibold mb-4 text-[#3E2723] font-[Tan Meringue]">
-        📈 Gold Price Trend - 2025
-      </div>
-      <div ref={chartRef} style={{ width: '100%', height: '100%' }} />
-    </motion.div>
-  );
-}
+return (
+  <div
+    className="rounded-2xl shadow-lg p-4 bg-[#FAF3E9]"
+    style={{ width: '100%', height: '400px' }}
+  >
+    <div className="text-xl font-semibold mb-4 text-[#3E2723] font-[Tan Meringue]">
+      📈 Gold Price Trend - 2025
+    </div>
+    <div ref={chartRef} style={{ width: '100%', height: '100%' }} />
+  </div>
+);
