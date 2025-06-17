@@ -1,48 +1,47 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookUser, Mail, Gift, Check, ArrowRight } from 'lucide-react'; // Changed BookMarked to BookUser
+import { Card, CardContent } from '@/components/ui/card';
+import { BookUser, Mail, Gift, Check, ArrowRight } from 'lucide-react';
 
 const featuresData = [
   {
-    Icon: BookUser, // Changed from BookMarked
+    Icon: BookUser,
     title: "Baby's Digital Journal",
     description: "Document your child's precious moments with text, photos, and videos in a secure digital journal that grows with them.",
-    imageUrl: "https://cloud.squidex.io/api/assets/baby-diaries/a01ca557-c80e-4fe3-af88-5bad7562607e/baby-diaries-baby-boek.jpg",
+    imageUrl: "https://cloud.squidex.io/api/assets/baby-diaries/...jpg",
     aiHint: "digital journal baby",
     listItems: [
       "Unlimited photo and video storage",
       "Sunheri Virasaat tracking with reminders",
       "Growth charts and development tracking",
     ],
-    href: "/digital-journal", // Added href
+    href: "/digital-journal",
   },
   {
     Icon: Mail,
     title: "Legacy Letters",
     description: "Write time-locked digital letters for your child to be unlocked at key ages or sunheri virasaat you choose.",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLsfjnXhnPc6iGJimKVs6DHWKvxUGmn-Tciw&s",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLsf...",
     aiHint: "legacy letters child",
     listItems: [
       "Schedule letters for future birthdays",
       "Include photos, videos, and audio messages",
       "Bank-level encryption and security",
     ],
-    href: "/legacy-letters", // Added href
+    href: "/legacy-letters",
   },
   {
     Icon: Gift,
     title: "Gift Registry",
     description: "Create a personalized registry where friends and family can contribute to your child's gold fund for special occasions.",
-    imageUrl: "https://mionza.com/cdn/shop/files/14K-Solid-Gold-Baby-ID-Bracelet-Mionza-6754615_4cbbd2b5-ccaf-4552-b717-4ea24792ef9a.jpg?v=1749643871&width=1946",
+    imageUrl: "https://mionza.com/cdn/shop/files/14K-Solid-Gold-Baby-ID-Bracelet...",
     aiHint: "gift registry gold",
     listItems: [
       "Shareable links for birthdays and events",
       "Personalized thank you messages",
       "Track contributions and send reminders",
     ],
-    href: "/gift-registry", // Added href
+    href: "/gift-registry",
   },
 ];
 
@@ -56,7 +55,7 @@ export default function FeaturesSection() {
             More than just gold nanhi tijori. Create memories, document sunheri virasaat, and build a legacy for your child.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuresData.map((feature) => (
             <Card key={feature.title} className="bg-card rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col">
