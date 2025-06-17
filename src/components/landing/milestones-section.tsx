@@ -164,7 +164,7 @@ export default function MilestonesSection() {
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative">
               <Image 
-                src="https://images.unsplash.com/photo-1535484305382-556d4487b33d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnb2xkJTIwbWFraW5nfGVufDB8fHx8MTc0OTcwOTAxMnww&ixlib=rb-4.1.0&q=80&w=1080" 
+                src="https://images.stockcake.com/public/f/0/b/f0b768d7-9c66-48ea-987f-7982f37071da_large/jewelry-crafting-process-stockcake.jpg" 
                 alt="Gold Crafting Process" 
                 width={600} 
                 height={400} 
