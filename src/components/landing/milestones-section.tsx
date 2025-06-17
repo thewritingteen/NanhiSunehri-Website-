@@ -1,4 +1,4 @@
-"use client";
+"use client"; // THIS MUST BE THE VERY FIRST LINE
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -70,8 +70,6 @@ function JewelryCard({ item }: { item: typeof jewelryItems[0] }) {
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           data-ai-hint={item.aiHint}
         />
-        {/* Sparkle Effect for AI Hint - This would be a separate component */}
-        {/* {item.aiHint && <SparkleEffect />} */}
       </div>
       <CardContent className="p-4">
         <div className="flex justify-between items-center mb-2">
@@ -79,7 +77,6 @@ function JewelryCard({ item }: { item: typeof jewelryItems[0] }) {
           <span className="text-primary font-medium">{item.gold}</span>
         </div>
         <p className="text-muted-foreground text-sm mb-4 h-16">{item.description}</p>
-        {/* Removed the "Convert Gold" button and its containing div */}
       </CardContent>
       <Button 
         variant="ghost" 
