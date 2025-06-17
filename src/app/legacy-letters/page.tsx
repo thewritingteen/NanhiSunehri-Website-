@@ -13,10 +13,13 @@ export default function LegacyLettersPage() {
     <div className="container mx-auto px-4 py-12 md:py-20">
       <Card className="max-w-3xl mx-auto shadow-xl">
         <CardHeader className="text-center">
-          <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
-            <Mail className="h-10 w-10 text-primary" />
-          </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold">Legacy Letters</CardTitle>
+         <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
+  <div className="flex items-center justify-center space-x-3">
+    <Mail className="h-10 w-10 text-primary" />
+    <CardTitle className="text-3xl md:text-4xl font-bold">Legacy Letters</CardTitle>
+  </div>
+</div>
+
           <CardDescription className="text-lg text-muted-foreground mt-2">
             Share your wisdom, love, and dreams with your child, to be read in the future.
           </CardDescription>
