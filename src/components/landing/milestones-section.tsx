@@ -163,14 +163,15 @@ export default function MilestonesSection() {
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative">
-              <Image 
-                src="https://images.stockcake.com/public/f/0/b/f0b768d7-9c66-48ea-987f-7982f37071da_large/jewelry-crafting-process-stockcake.jpg" 
-                alt="Gold Crafting Process" 
-                width={600} 
-                height={400} 
-                className="rounded-lg shadow-lg"
-                data-ai-hint="jewelry crafting artisan"
-              />
+              // In component
+<Image 
+  src="https://images.stockcake.com/public/f/0/b/f0b768d7-9c66-48ea-987f-7982f37071da_large/jewelry-crafting-process-stockcake.jpg"
+  alt="Gold Crafting Process"
+  width={600}
+  height={400}
+  className="rounded-lg shadow-lg"
+/>
+
               <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full shadow-md">
                 Zero Making Charges
               </div>
