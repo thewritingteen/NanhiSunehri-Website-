@@ -95,12 +95,12 @@ export default function AppNavbar() {
                 <div className="flex flex-col space-y-3 pt-6 border-t border-border">
                   <SheetClose asChild>
                     <Button variant="outline" className="w-full" asChild>
-                        <Link href="/login">Log In</Link>
+                        <Link href="/login-signup">Log In</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
                     <Button className="w-full" asChild>
-                        <Link href="/signup">Sign Up</Link>
+                        <Link href="/login-signup">Sign Up</Link>
                     </Button>
                   </SheetClose>
                 </div>
