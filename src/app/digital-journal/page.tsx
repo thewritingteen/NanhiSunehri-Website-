@@ -27,16 +27,7 @@ export default function DigitalJournalPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6 md:p-8 text-center">
-          <div className="mb-8 flex justify-center">
-            <Image
-              src="https://images.unsplash.com/photo-1514782831304-632d84503f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMXx8ZGlnaXRhbCUyMGpvdXJuYWx8ZW58MHx8fHwxNzQ5NjUwOTU5fDA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Illustration of a digital baby journal with photos and milestones"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-md"
-              data-ai-hint="baby memories"
-            />
-          </div>
+          
           <p className="text-muted-foreground mb-6">
             Our Digital Journal feature allows you to create a living scrapbook of your child's life.
             Securely store photos, videos, notes, and sunheri virasaat. Document growth,
