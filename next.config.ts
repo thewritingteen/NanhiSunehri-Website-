@@ -1,8 +1,6 @@
-
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -28,6 +26,24 @@ const nextConfig: NextConfig = {
         hostname: 'images.unsplash.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.stockcake.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cloud.squidex.io',
+        port: '',
+        pathname: '/api/assets/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'mionza.com',
+        port: '',
+        pathname: '/cdn/shop/files/**',
       }
     ],
   },
