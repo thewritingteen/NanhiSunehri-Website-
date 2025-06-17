@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
+  images: {domains: ['www.incrediblegifts.in','media.istockphoto.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -39,12 +39,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
+       {
         protocol: 'https',
         hostname: 'img.freepik.com',
-        port: '',
-        pathname: '/**',
-      }
+        port: '', // Keep this empty unless a specific port is used
+        pathname: '**', // This wildcard allows any path on img.freepik.com
+      },
     ],
   },
 };
