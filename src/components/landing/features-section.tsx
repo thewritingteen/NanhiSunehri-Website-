@@ -8,7 +8,7 @@ const featuresData = [
     Icon: BookUser,
     title: "Baby's Digital Journal",
     description: "Document your child's precious moments with text, photos, and videos in a secure digital journal that grows with them.",
-    imageUrl: "https://cloud.squidex.io/api/assets/baby-diaries/...jpg",
+    imageUrl: "https://shopsolidsociety.com/cdn/shop/products/il_fullxfull.5524257215_3ynm.jpg?v=1704822132&width=1080",
     aiHint: "digital journal baby",
     listItems: [
       "Unlimited photo and video storage",
