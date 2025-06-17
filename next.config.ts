@@ -35,9 +35,9 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cloud.squidex.io',
+        hostname: 'shopsolidsociety.com',
         port: '',
-        pathname: '/api/assets/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',
