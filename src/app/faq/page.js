@@ -1,6 +1,8 @@
 // faq/components/FAQSection.js
 // (or components/FAQSection.js if using Pages Router)
 
+"use client"; // <--- ADD THIS LINE AT THE VERY TOP
+
 import { useState } from 'react'; // For simple accordion-like behavior
 
 export default function FAQSection() {
