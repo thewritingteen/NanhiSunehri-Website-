@@ -16,8 +16,8 @@ export default function DigitalJournalPage() {
         <CardHeader className="text-center">
           <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
             <BookUser className="h-10 w-10 text-primary" />
+            <CardTitle className="text-3xl md:text-4xl font-bold">Digital Journal</CardTitle>
           </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold">Digital Journal</CardTitle>
           <CardDescription className="text-lg text-muted-foreground mt-2">
             Capture and cherish every precious moment of your child's journey.
           </CardDescription>
