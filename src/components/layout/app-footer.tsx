@@ -11,7 +11,7 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { href: '#', label: 'About Us' },
+  { href: '/about', label: 'About Us' },
   { href: '/#investment', label: 'How It Works' },
   { href: '#', label: 'Testimonials' },
   { href: '#', label: 'Blog' },
