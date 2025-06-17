@@ -10,30 +10,6 @@ const securityFeatures = [
   { Icon: Lock, title: "Bank-Grade Encryption", description: "256-bit encryption for all transactions and personal data." },
   { Icon: Vault, title: "Physical Gold Backing", description: "Every digital gram is backed by physical gold stored in secure vaults." },
 ];
-
-const faqItems = [
-  {
-    id: "faq1",
-    question: "How is my digital gold stored and secured?",
-    answer: "Your digital gold is backed 100% by physical gold stored in secure vaults with 24/7 surveillance, armed guards, and multiple security systems. The gold is fully insured against theft, damage, or loss. You receive a digital certificate of ownership for every purchase."
-  },
-  {
-    id: "faq2",
-    question: "Can I withdraw my gold investment at any time?",
-    answer: "Yes, you can sell your digital gold back to us at any time at the current market rate. The funds will be credited to your linked bank account within 1-2 business days. There is a small selling fee of 0.5% of the transaction value."
-  },
-  {
-    id: "faq3",
-    question: "How do I convert my digital gold into jewelry?",
-    answer: "You can convert your digital gold into physical jewelry through our platform. Simply select a design from our catalog or request a custom design, choose how much gold you want to convert, and our artisans will craft your jewelry. We charge no making fees, only the actual crafting costs."
-  },
-  {
-    id: "faq4",
-    question: "What happens to my child's account when they turn 18?",
-    answer: "When your child turns 18, they can choose to take control of their account. We'll guide them through the transition process, explaining their investment and all the features available. They can continue investing, convert to jewelry, or withdraw the investment as needed."
-  }
-];
-
 export default function TrustSection() {
   return (
     <section id="trust" className="py-16 md:py-20 bg-background">
@@ -95,24 +71,7 @@ export default function TrustSection() {
             </div>
           </div>
         </div>
-        
-        <div className="mt-16 md:mt-20">
-          <Card className="bg-muted/30 p-6 md:p-8 rounded-lg shadow-lg">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-center text-foreground">Frequently Asked Questions</h3>
-            <Accordion type="single" collapsible className="max-w-3xl mx-auto space-y-4">
-              {faqItems.map(faq => (
-                <AccordionItem key={faq.id} value={faq.id} className="bg-card border-border rounded-lg shadow-sm">
-                  <AccordionTrigger className="p-4 md:p-5 text-left font-medium text-card-foreground hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="p-4 md:p-5 pt-0 text-muted-foreground">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </Card>
-        </div>
+
       </div>
     </section>
   );
