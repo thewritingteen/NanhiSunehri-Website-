@@ -14,9 +14,12 @@ export default function GiftRegistryPage() {
       <Card className="max-w-3xl mx-auto shadow-xl">
         <CardHeader className="text-center">
           <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
-            <Gift className="h-10 w-10 text-primary" />
-          </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold">Gift Registry</CardTitle>
+  <div className="flex items-center justify-center space-x-3">
+    <Gift className="h-10 w-10 text-primary" />
+    <CardTitle className="text-3xl md:text-4xl font-bold">Gift Registry</CardTitle>
+  </div>
+</div>
+
           <CardDescription className="text-lg text-muted-foreground mt-2">
             Make it easy for friends and family to contribute to your child's golden future.
           </CardDescription>
