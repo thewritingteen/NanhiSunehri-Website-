@@ -9,7 +9,7 @@ const featuresData = [
     Icon: BookUser, // Changed from BookMarked
     title: "Baby's Digital Journal",
     description: "Document your child's precious moments with text, photos, and videos in a secure digital journal that grows with them.",
-    imageUrl: "https://placehold.co/500x300.png",
+    imageUrl: "https://cloud.squidex.io/api/assets/baby-diaries/a01ca557-c80e-4fe3-af88-5bad7562607e/baby-diaries-baby-boek.jpg",
     aiHint: "digital journal baby",
     listItems: [
       "Unlimited photo and video storage",
@@ -22,7 +22,7 @@ const featuresData = [
     Icon: Mail,
     title: "Legacy Letters",
     description: "Write time-locked digital letters for your child to be unlocked at key ages or sunheri virasaat you choose.",
-    imageUrl: "https://placehold.co/500x300.png",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLsfjnXhnPc6iGJimKVs6DHWKvxUGmn-Tciw&s",
     aiHint: "legacy letters child",
     listItems: [
       "Schedule letters for future birthdays",
@@ -35,7 +35,7 @@ const featuresData = [
     Icon: Gift,
     title: "Gift Registry",
     description: "Create a personalized registry where friends and family can contribute to your child's gold fund for special occasions.",
-    imageUrl: "https://placehold.co/500x300.png",
+    imageUrl: "https://mionza.com/cdn/shop/files/14K-Solid-Gold-Baby-ID-Bracelet-Mionza-6754615_4cbbd2b5-ccaf-4552-b717-4ea24792ef9a.jpg?v=1749643871&width=1946",
     aiHint: "gift registry gold",
     listItems: [
       "Shareable links for birthdays and events",
