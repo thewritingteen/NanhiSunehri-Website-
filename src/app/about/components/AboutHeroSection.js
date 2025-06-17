@@ -8,8 +8,12 @@ export default function AboutHeroSection() {
     // Tailwind classes for consistent padding, background, and text alignment
     <section className="py-24 bg-background text-foreground text-center px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Using font-headline for H1, text-primary-foreground for contrast */}
-        <h1 className="font-headline text-5xl md:text-6xl text-primary-foreground mb-6 leading-tight">
+        {/*
+          CHANGED: h1 text color from 'text-primary-foreground' to 'text-foreground'.
+          This uses your --foreground (Dark Brown) color, which will provide much better visibility
+          against the light cream background, making the heading clearly readable.
+        */}
+        <h1 className="font-headline text-5xl md:text-6xl text-foreground mb-6 leading-tight">
           About Nanhi Sunehri
         </h1>
         {/* Using font-body for general text */}
@@ -19,7 +23,8 @@ export default function AboutHeroSection() {
         <p className="font-body text-lg text-foreground/70 mb-10 max-w-3xl mx-auto">
           At Nanhi Sunehri, we are passionately dedicated to transforming lives through impactful initiatives.
           Our journey began with a vision to create sustainable solutions for real-world challenges,
-          fostering growth, safety, and community empowerment. We believe in nurturing bright minds and building a resilient future.
+          fostering growth, safety, and community empowerment. We believe in nurturing bright minds and building a
+          resilient future.
         </p>
         {/* Example Button - replicate your homepage button styles */}
         {/*
