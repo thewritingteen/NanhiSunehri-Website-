@@ -82,15 +82,6 @@ function JewelryCard({ item }: { item: typeof jewelryItems[0] }) {
           <span className="text-xs text-muted-foreground/80">Crafting: {item.craftingTime}</span>
         </div>
       </CardContent>
-      <Button 
-        variant="ghost" 
-        size="icon" 
-        className="absolute top-3 right-3 w-8 h-8 bg-background/80 rounded-full shadow-md hover:bg-background"
-        onClick={() => setIsFavorite(!isFavorite)}
-        aria-label="Favorite"
-      >
-        <Heart className={`w-4 h-4 ${isFavorite ? 'text-red-500 fill-red-500' : 'text-muted-foreground hover:text-red-500'}`} />
-      </Button>
     </Card>
   );
 }
