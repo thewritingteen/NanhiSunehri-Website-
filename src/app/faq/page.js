@@ -8,7 +8,7 @@ export default function FAQPage() {
     },
     {
       question: "How does Nanhi Sunehri handle gold investments?",
-      answer: "Gold investments on our platform are backed by BIS-hallmarked digital gold, stored securely via our vault partners, and fully insured. Parents can invest starting from ₹1, with live pricing and AI-powered savings plans."
+      answer: "Gold investments on our platform are backed by BIS-hallmarked digital gold, stored securely via our vault partners, and fully insured. Parents can invest starting from ₹100, with live pricing and AI-powered savings plans."
     },
     {
       question: "Can I gift gold or jewelry to someone using Nanhi Sunehri?",
