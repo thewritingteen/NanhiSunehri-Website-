@@ -1,13 +1,8 @@
-// faq/components/FAQSection.js
-// (or components/FAQSection.js if using Pages Router)
+// app/faq/page.js (or pages/faq.js if using Pages Router)
 
-// "use client"; // Not strictly necessary if no client-side hooks are used, but harmless to keep.
+import Link from 'next/link';
 
-// Removed: import { useState }ct'; // No longer needed for static display
-
-export default function FAQSection() {
-  // Removed: const [openIndex, setOpenIndex] = useState(null); // No longer needed
-
+export default function FAQPage() { // Renamed from FAQSection to FAQPage for clarity
   const faqs = [
     {
       question: "What is Nanhi Sunehri's primary mission?",
@@ -31,8 +26,6 @@ export default function FAQSection() {
     }
   ];
 
-  // Removed: const toggleFAQ = (index) => { setOpenIndex(openIndex === index ? null : index); }; // No longer needed
-
   return (
     <section className="py-20 bg-background text-foreground text-center px-4">
       <div className="max-w-4xl mx-auto">
@@ -48,13 +41,10 @@ export default function FAQSection() {
             <div
               key={index}
               className="bg-card p-6 rounded-md shadow-lg border border-border text-left"
-              // Removed: onClick={() => toggleFAQ(index)} - no longer interactive
             >
               <h3 className="font-semibold text-lg md:text-xl text-foreground mb-3">
                 {faq.question}
-                {/* Removed: Simple indicator for open/close state (+/-) */}
               </h3>
-              {/* Answer is always visible because interaction is removed */}
               <p className="font-body text-base text-muted-foreground leading-relaxed">
                 {faq.answer}
               </p>
@@ -62,7 +52,6 @@ export default function FAQSection() {
           ))}
         </div>
 
-        {/* Call to action if questions aren't answered */}
         <div className="mt-20 bg-muted p-8 rounded-md shadow-lg border border-border">
           <h2 className="font-headline text-3xl text-foreground mb-6">Still Have Questions?</h2>
           <p className="font-body text-lg text-foreground/80 mb-10">
