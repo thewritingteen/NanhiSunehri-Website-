@@ -1,10 +1,3 @@
-// faq/components/FAQSection.js
-// (or components/FAQSection.js if using Pages Router)
-
-// "use client"; // Not strictly necessary if no client-side hooks are used, but harmless to keep.
-
-// Removed: import { useState } from 'react';
-
 export default function FAQSection() {
   // Removed: const [openIndex, setOpenIndex] = useState(null);
 
