@@ -8,7 +8,7 @@ const featuresData = [
     Icon: BookUser,
     title: "Baby's Digital Journal",
     description: "Document your child's precious moments with text, photos, and videos in a secure digital journal that grows with them.",
-    imageUrl: "",
+    imageUrl: "https://shopsolidsociety.com/cdn/shop/products/il_fullxfull.5524257215_3ynm.jpg?v=1704822132&width=1080",
     aiHint: "digital journal baby",
     listItems: [
       "Unlimited photo and video storage",
@@ -21,7 +21,7 @@ const featuresData = [
     Icon: Mail,
     title: "Legacy Letters",
     description: "Write time-locked digital letters for your child to be unlocked at key ages or sunheri virasaat you choose.",
-    imageUrl: "",
+    imageUrl: "https://placehold.co/500x300.png",
     aiHint: "legacy letters child",
     listItems: [
       "Schedule letters for future birthdays",
@@ -34,7 +34,7 @@ const featuresData = [
     Icon: Gift,
     title: "Gift Registry",
     description: "Create a personalized registry where friends and family can contribute to your child's gold fund for special occasions.",
-    imageUrl: "",
+    imageUrl: "https://placehold.co/500x300.png",
     aiHint: "gift registry gold",
     listItems: [
       "Shareable links for birthdays and events",
@@ -96,3 +96,4 @@ export default function FeaturesSection() {
     </section>
   );
 }
+
