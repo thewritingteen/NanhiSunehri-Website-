@@ -16,7 +16,7 @@ const featuresData = [
       "Growth charts and development tracking",
     ],
     href: "/digital-journal",
-  },
+  }, 
   {
     Icon: Mail,
     title: "Legacy Letters",
