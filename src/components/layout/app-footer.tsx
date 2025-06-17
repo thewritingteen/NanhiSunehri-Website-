@@ -33,7 +33,8 @@ export default function AppFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <Link href="/" className="text-3xl font-tan-meringue text-primary mb-4 block flex items-center">
-              <span className="w-10 h-10">
+              {/* MODIFIED THIS SECTION */}
+              <span className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-2">
                 <img
                   src="/images/logo.png"
                   alt="Logo"
@@ -81,7 +82,7 @@ export default function AppFooter() {
   <div className="flex">
     <Input
       type="email"
-      name="email"  // ✅ Add this line
+      name="email"
       placeholder="Your email"
       className="bg-background/10 text-background placeholder-background/50 border-none rounded-r-none focus:ring-2 focus:ring-primary"
       required
@@ -121,4 +122,4 @@ export default function AppFooter() {
       </div>
     </footer>
   );
-} 
+}
