@@ -1,9 +1,9 @@
 // faq/components/FAQSection.js
 // (or components/FAQSection.js if using Pages Router)
 
-"use client"; // <--- ADD THIS LINE AT THE VERY TOP
+"use client"; // <-- THIS MUST BE THE VERY FIRST LINE
 
-import { useState } from 'react'; // For simple accordion-like behavior
+import { useState } from 'react'; // Now it should be allowed
 
 export default function FAQSection() {
   // State to manage which FAQ item is open (if implementing simple accordion)
