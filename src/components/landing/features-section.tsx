@@ -21,7 +21,7 @@ const featuresData = [
     Icon: Mail,
     title: "Legacy Letters",
     description: "Write time-locked digital letters for your child to be unlocked at key ages or sunheri virasaat you choose.",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLsf...",
+    imageUrl: "https://img.freepik.com/free-photo/top-view-love-letters-arrangement_23-2150716565.jpg?semt=ais_hybrid&w=740",
     aiHint: "legacy letters child",
     listItems: [
       "Schedule letters for future birthdays",
