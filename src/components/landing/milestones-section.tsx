@@ -80,9 +80,6 @@ function JewelryCard({ item }: { item: typeof jewelryItems[0] }) {
         <p className="text-muted-foreground text-sm mb-4 h-16">{item.description}</p>
         <div className="flex justify-between items-center">
           <span className="text-xs text-muted-foreground/80">Crafting: {item.craftingTime}</span>
-          <Button size="sm" variant="primary" asChild>
-            <Link href="/jewelry-advisor">Convert Gold</Link>
-          </Button>
         </div>
       </CardContent>
       <Button 
