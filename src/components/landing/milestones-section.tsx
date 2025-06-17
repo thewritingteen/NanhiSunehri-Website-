@@ -117,9 +117,6 @@ export default function MilestonesSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Convert your digital gold into meaningful jewelry pieces that mark your child's special moments.
           </p>
-           <Button variant="link" asChild className="text-primary text-lg mt-4">
-             <Link href="/jewelry-advisor">Explore with AI Jewelry Advisor <ArrowRight className="ml-2 h-5 w-5" /></Link>
-           </Button>
         </div>
         
         <div className="relative">
