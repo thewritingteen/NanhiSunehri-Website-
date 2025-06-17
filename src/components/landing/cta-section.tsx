@@ -14,7 +14,7 @@ export default function CtaSection() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button size="lg" variant="secondary" asChild className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-md">
-                <Link href="/signup">Create Account</Link>
+                <Link href="/login-signup">Create Account</Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary shadow-md">
                 <Link href="/demo">Schedule a Demo</Link>
