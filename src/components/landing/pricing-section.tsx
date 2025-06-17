@@ -12,7 +12,7 @@ const plans = {
   monthly: [
     {
       name: "Starter",
-      price: "₹299",
+      price: "&#8377;299",
       billingCycle: "/month",
       description: "Perfect for new parents just starting their gold nanhi tijori journey.",
       features: [
