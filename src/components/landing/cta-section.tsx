@@ -16,7 +16,13 @@ export default function CtaSection() {
               <Button size="lg" variant="secondary" asChild className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-md">
                 <Link href="/login-signup">Create Account</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary shadow-md">
+              {/*
+                UPDATED BUTTON STYLE:
+                - Changed text and border color to 'text-accent' and 'border-accent' (Deep Brown)
+                  for better visibility on the gold/brown gradient background.
+                - Adjusted hover state to match the overall theme while providing clear feedback.
+              */}
+              <Button size="lg" variant="outline" asChild className="border-accent text-accent hover:bg-accent hover:text-accent-foreground shadow-md">
                 <Link href="/demo">Schedule a Demo</Link>
               </Button>
             </div>
