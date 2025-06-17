@@ -15,7 +15,7 @@ const quickLinks = [
   { href: '/howitwork', label: 'How It Works' },
   { href: '/testimonial', label: 'Testimonials' },
   { href: '/blog', label: 'Blog' },
-  { href: '#', label: 'Careers' },
+  { href: '/career', label: 'Careers' },
 ];
 
 const supportLinks = [
