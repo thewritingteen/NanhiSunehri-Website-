@@ -22,7 +22,7 @@ export default function HelpPage() {
               Find instant answers to the most common questions about Nanhi Sunehri, our programs,
               and how you can get involved.
             </p>
-            <Link href="#" className="inline-flex items-center justify-center
+            <Link href="/faq" className="inline-flex items-center justify-center
               rounded-md text-sm font-medium transition-colors
               bg-secondary text-secondary-foreground px-5 py-2
               hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2
