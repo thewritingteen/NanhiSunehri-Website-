@@ -10,7 +10,6 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 const navLinks = [
   { href: '/#investment', label: 'Nanhi Tijori' },
   { href: '/#milestones', label: 'Sunheri Virasaat' },
-  { href: '/jewelry-advisor', label: 'Jewelry Advisor' },
   { href: '/digital-journal', label: 'Digital Journal' },
   { href: '/legacy-letters', label: 'Legacy Letters' },
   { href: '/gift-registry', label: 'Gift Registry' },
