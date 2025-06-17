@@ -41,9 +41,9 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'mionza.com',
+        hostname: 'img.freepik.com',
         port: '',
-        pathname: '/cdn/shop/files/**',
+        pathname: '/**',
       }
     ],
   },
