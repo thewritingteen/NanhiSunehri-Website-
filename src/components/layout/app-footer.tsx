@@ -7,7 +7,7 @@ const socialLinks = [
   { Icon: Facebook, href: 'https://www.facebook.com/nanhisunehri/', label: 'Facebook' },
   { Icon: Instagram, href: 'https://www.instagram.com/nanhisunehri/', label: 'Instagram' },
   { Icon: Twitter, href: 'https://x.com/nanhisunehri', label: 'Twitter' },
-  { Icon: Youtube, href: 'https://www.linkedin.com/company/nanhi-sunehri/', label: 'Linkedin' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/company/nanhi-sunehri/', label: 'Linkedin' },
 ];
 
 const quickLinks = [
