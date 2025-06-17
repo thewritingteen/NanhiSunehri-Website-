@@ -54,10 +54,10 @@ export default function AppNavbar() {
         
         <div className="hidden md:flex items-center space-x-3">
           <Button variant="ghost" asChild>
-            <Link href="/login">Log In</Link>
+            <Link href="/login-signup">Log In</Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">Sign Up</Link>
+            <Link href="/login-signup">Sign Up</Link>
           </Button>
         </div>
 
