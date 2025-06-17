@@ -1,4 +1,3 @@
-// app/faq/page.js (or pages/faq.js if using Pages Router)
 
 import Link from 'next/link';
 
