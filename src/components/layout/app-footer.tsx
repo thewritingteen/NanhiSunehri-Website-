@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Youtube, CreditCard } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, CreditCard } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 const socialLinks = [
-  { Icon: Facebook, href: '#', label: 'Facebook' },
-  { Icon: Instagram, href: '#', label: 'Instagram' },
-  { Icon: Twitter, href: '#', label: 'Twitter' },
-  { Icon: Youtube, href: '#', label: 'YouTube' },
+  { Icon: Facebook, href: 'https://www.facebook.com/nanhisunehri/', label: 'Facebook' },
+  { Icon: Instagram, href: 'https://www.instagram.com/nanhisunehri/', label: 'Instagram' },
+  { Icon: Twitter, href: 'https://x.com/nanhisunehri', label: 'Twitter' },
+  { Icon: Youtube, href: 'https://www.linkedin.com/company/nanhi-sunehri/', label: 'Linkedin' },
 ];
 
 const quickLinks = [
