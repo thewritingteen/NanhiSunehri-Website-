@@ -1,5 +1,12 @@
+// faq/components/FAQSection.js
+// (or components/FAQSection.js if using Pages Router)
+
+// "use client"; // Not strictly necessary if no client-side hooks are used, but harmless to keep.
+
+// Removed: import { useState }ct'; // No longer needed for static display
+
 export default function FAQSection() {
-  // Removed: const [openIndex, setOpenIndex] = useState(null);
+  // Removed: const [openIndex, setOpenIndex] = useState(null); // No longer needed
 
   const faqs = [
     {
@@ -24,7 +31,7 @@ export default function FAQSection() {
     }
   ];
 
-  // Removed: const toggleFAQ = (index) => { setOpenIndex(openIndex === index ? null : index); };
+  // Removed: const toggleFAQ = (index) => { setOpenIndex(openIndex === index ? null : index); }; // No longer needed
 
   return (
     <section className="py-20 bg-background text-foreground text-center px-4">
@@ -47,7 +54,7 @@ export default function FAQSection() {
                 {faq.question}
                 {/* Removed: Simple indicator for open/close state (+/-) */}
               </h3>
-              {/* Answer is always visible */}
+              {/* Answer is always visible because interaction is removed */}
               <p className="font-body text-base text-muted-foreground leading-relaxed">
                 {faq.answer}
               </p>
