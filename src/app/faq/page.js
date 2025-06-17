@@ -1,27 +1,26 @@
-
 import Link from 'next/link';
 
-export default function FAQPage() { // Renamed from FAQSection to FAQPage for clarity
+export default function FAQPage() {
   const faqs = [
     {
-      question: "What is Nanhi Sunehri's primary mission?",
-      answer: "Nanhi Sunehri is dedicated to transforming lives through impactful initiatives focused on sustainable education, community well-being, and leveraging technology for social good. Our primary mission is to empower individuals and communities for a brighter future."
+      question: "What is Nanhi Sunehri's core purpose?",
+      answer: "Nanhi Sunehri™ helps Indian parents build a golden future for their children through smart, milestone-based gold investments and culturally rooted jewelry gifting—made secure, meaningful, and digital."
     },
     {
-      question: "How does Nanhi Sunehri fund its projects?",
-      answer: "We primarily fund our projects through a combination of grants from philanthropic organizations, corporate social responsibility (CSR) partnerships, and individual donations. We also explore innovative funding models to ensure long-term sustainability."
+      question: "How does Nanhi Sunehri handle gold investments?",
+      answer: "Gold investments on our platform are backed by BIS-hallmarked digital gold, stored securely via our vault partners, and fully insured. Parents can invest starting from ₹1, with live pricing and AI-powered savings plans."
     },
     {
-      question: "How can I get involved or volunteer?",
-      answer: "We welcome passionate individuals to join our mission! You can explore current opportunities on our 'Careers' page, or reach out via our 'Contact Us' page to inquire about specific volunteer roles or partnerships."
+      question: "Can I gift gold or jewelry to someone using Nanhi Sunehri?",
+      answer: "Yes! Through our Gift Registry and Wishlist features, family and friends can contribute toward a child's gold or milestone jewelry purchase—perfect for birthdays, naming ceremonies, or first steps."
     },
     {
-      question: "What kind of impact has Nanhi Sunehri made so far?",
-      answer: "We have successfully implemented educational programs reaching over [X number] children, deployed tech solutions impacting [Y number] communities, and facilitated empowerment initiatives for [Z number] individuals. You can read more about our impact on our 'About Us' and 'Blog' pages."
+      question: "What makes Nanhi Sunehri unique?",
+      answer: "We combine fintech innovation with Indian tradition—offering milestone-based jewelry tracking, personalized baby journals, secure gold lockers, and regional language support for a truly family-first experience."
     },
     {
-      question: "Is Nanhi Sunehri a registered non-profit organization?",
-      answer: "Yes, Nanhi Sunehri is a registered non-profit organization, committed to transparency and accountability in all our operations. Details about our registration and governance are available upon request."
+      question: "Is Nanhi Sunehri a safe and registered platform?",
+      answer: "Absolutely. Nanhi Sunehri™ partners only with RBI-licensed, SEBI-compliant, and BIS-certified providers to ensure every investment is authentic, secure, and traceable. Your trust is our priority."
     }
   ];
 
