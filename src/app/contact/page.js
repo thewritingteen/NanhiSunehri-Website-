@@ -82,10 +82,7 @@ export default function ContactPage() {
             <div>
               <h3 className="font-semibold text-lg text-accent mb-2">Email Us</h3>
               <p className="font-body text-base text-muted-foreground">
-                For general inquiries: <a href="mailto:info@nanhisunehri.com" className="text-primary hover:underline">info@nanhisunehri.com</a>
-              </p>
-              <p className="font-body text-base text-muted-foreground">
-                For partnerships: <a href="mailto:partnerships@nanhisunehri.com" className="text-primary hover:underline">partnerships@nanhisunehri.com</a>
+                For general inquiries: <a href="mailto:arpthunder@gmail.com" className="text-primary hover:underline">arpthunder@gmail.com</a>
               </p>
             </div>
             <div>
@@ -96,7 +93,7 @@ export default function ContactPage() {
                 City, State, Country - 12345
               </p>
               <p className="font-body text-base text-muted-foreground mt-2">
-                Phone: +91 98765 43210
+                Phone: +91 9337969238
               </p>
             </div>
           </div>
