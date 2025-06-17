@@ -27,12 +27,14 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'images.stockcake.com',
-        port: '',
-        pathname: '/**',
-      },
+    {
+      protocol: 'https',
+      hostname: 'images.stockcake.com',
+      pathname: '/**',
+    },
+  ],
+},
+
       {
         protocol: 'https',
         hostname: 'cloud.squidex.io',
