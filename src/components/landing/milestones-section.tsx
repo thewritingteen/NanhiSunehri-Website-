@@ -1,12 +1,10 @@
-
 "use client";
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import SparkleEffect from '@/components/ui/sparkle-effect';
 
 const jewelryItems = [
@@ -16,7 +14,7 @@ const jewelryItems = [
     gold: "2g",
     description: "A delicate bracelet with charms to celebrate your baby's first year.",
     craftingTime: "2 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxicmFjZWxldHxlbnwwfHx8fDE3NDk3MDg3NjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?...",
     aiHint: "gold bracelet baby"
   },
   {
@@ -25,7 +23,7 @@ const jewelryItems = [
     gold: "1.5g",
     description: "Delicate earrings for your child's ear-piercing ceremony.",
     craftingTime: "1 week",
-    imageUrl: "https://images.unsplash.com/photo-1617493255060-2745a8c22ebf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlYXJyaW5nc3xlbnwwfHx8fDE3NDk3MDg3ODl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1617493255060-2745a8c22ebf?...",
     aiHint: "gold earrings child"
   },
   {
@@ -34,7 +32,7 @@ const jewelryItems = [
     gold: "3g",
     description: "A special pendant to mark your child's fifth year sunheri virasaat.",
     craftingTime: "3 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1631965004544-1762fc696476?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZW5kYW50fGVufDB8fHx8MTc0OTcwODg3MHww&ixlib=rb-4.1.0&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1631965004544-1762fc696476?...",
     aiHint: "gold pendant child"
   },
   {
@@ -43,7 +41,7 @@ const jewelryItems = [
     gold: "4g",
     description: "A special ring to celebrate academic or extracurricular achievements.",
     craftingTime: "3 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1628926379972-9843ad139a8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxN3x8cmluZyUyMHxlbnwwfHx8fDE3NDk3MDg5MDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1628926379972-9843ad139a8c?...",
     aiHint: "gold ring child"
   },
   {
@@ -52,14 +50,12 @@ const jewelryItems = [
     gold: "5g",
     description: "Elegant necklace to commemorate educational sunheri virasaat.",
     craftingTime: "4 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1636103952204-0b738c225264?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNHx8bmVja2xhY2V8ZW58MHx8fHwxNzQ5NzA4OTI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    imageUrl: "https://images.unsplash.com/photo-1636103952204-0b738c225264?...",
     aiHint: "gold necklace graduation"
   },
 ];
 
 function JewelryCard({ item }: { item: typeof jewelryItems[0] }) {
-  const [isFavorite, setIsFavorite] = useState(false);
-
   return (
     <Card className="flex-shrink-0 w-72 md:w-80 bg-card rounded-lg shadow-md overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
       <div className="h-64 overflow-hidden">
@@ -109,34 +105,24 @@ export default function MilestonesSection() {
             Convert your digital gold into meaningful jewelry pieces that mark your child's special moments.
           </p>
         </div>
-        
+
         <div className="relative">
           <div ref={carouselRef} className="flex overflow-x-auto pb-8 space-x-6 scrollbar-hide">
             {jewelryItems.map((item) => (
               <JewelryCard key={item.id} item={item} />
             ))}
           </div>
-          
-          <Button 
-            variant="outline" 
-            size="icon" 
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full shadow-md z-10 -ml-2 sm:-ml-5 hover:bg-background"
-            onClick={() => scroll('left')}
-            aria-label="Previous jewelry item"
-          >
+
+          <Button variant="outline" size="icon" onClick={() => scroll('left')} aria-label="Previous"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full shadow-md z-10 -ml-2 sm:-ml-5 hover:bg-background">
             <ChevronLeft className="h-6 w-6" />
           </Button>
-          <Button 
-            variant="outline" 
-            size="icon" 
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full shadow-md z-10 -mr-2 sm:-mr-5 hover:bg-background"
-            onClick={() => scroll('right')}
-            aria-label="Next jewelry item"
-          >
+          <Button variant="outline" size="icon" onClick={() => scroll('right')} aria-label="Next"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-background/80 backdrop-blur-sm rounded-full shadow-md z-10 -mr-2 sm:-mr-5 hover:bg-background">
             <ChevronRight className="h-6 w-6" />
           </Button>
         </div>
-        
+
         <div className="mt-16 md:mt-20 bg-muted/30 rounded-lg p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
           <div className="w-full md:w-1/2">
             <h3 className="text-2xl font-semibold mb-4 text-foreground">Gold Conversion Process</h3>
@@ -163,15 +149,13 @@ export default function MilestonesSection() {
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative">
-              // In component
-<Image 
-  src="https://images.stockcake.com/public/f/0/b/f0b768d7-9c66-48ea-987f-7982f37071da_large/jewelry-crafting-process-stockcake.jpg"
-  alt="Gold Crafting Process"
-  width={600}
-  height={400}
-  className="rounded-lg shadow-lg"
-/>
-
+              <Image 
+                src="https://images.stockcake.com/public/f/0/b/f0b768d7-9c66-48ea-987f-7982f37071da_large/jewelry-crafting-process-stockcake.jpg"
+                alt="Gold Crafting Process"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
               <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full shadow-md">
                 Zero Making Charges
               </div>
@@ -182,10 +166,3 @@ export default function MilestonesSection() {
     </section>
   );
 }
-
-// Helper to hide scrollbar (optional, can be done globally in globals.css if preferred)
-// Ensure this class is added to globals.css or here in a style tag if not using Tailwind plugin
-// .scrollbar-hide::-webkit-scrollbar { display: none; }
-// .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-// For this example, assuming a Tailwind plugin or global style handles .scrollbar-hide
-
