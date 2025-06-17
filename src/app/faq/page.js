@@ -1,13 +1,12 @@
 // faq/components/FAQSection.js
 // (or components/FAQSection.js if using Pages Router)
 
-"use client"; // <-- THIS MUST BE THE VERY FIRST LINE
+// "use client"; // Not strictly necessary if no client-side hooks are used, but harmless to keep.
 
-import { useState } from 'react'; // Now it should be allowed
+// Removed: import { useState } from 'react';
 
 export default function FAQSection() {
-  // State to manage which FAQ item is open (if implementing simple accordion)
-  const [openIndex, setOpenIndex] = useState(null);
+  // Removed: const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
     {
@@ -32,9 +31,7 @@ export default function FAQSection() {
     }
   ];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  // Removed: const toggleFAQ = (index) => { setOpenIndex(openIndex === index ? null : index); };
 
   return (
     <section className="py-20 bg-background text-foreground text-center px-4">
@@ -50,19 +47,17 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-card p-6 rounded-md shadow-lg border border-border text-left cursor-pointer"
-              onClick={() => toggleFAQ(index)} // Simple click to open/close
+              className="bg-card p-6 rounded-md shadow-lg border border-border text-left"
+              // Removed: onClick={() => toggleFAQ(index)} - no longer interactive
             >
-              <h3 className="font-semibold text-lg md:text-xl text-foreground flex justify-between items-center">
+              <h3 className="font-semibold text-lg md:text-xl text-foreground mb-3">
                 {faq.question}
-                {/* Simple indicator for open/close state */}
-                <span className="text-primary text-2xl ml-4">{openIndex === index ? '-' : '+'}</span>
+                {/* Removed: Simple indicator for open/close state (+/-) */}
               </h3>
-              {openIndex === index && ( // Only show answer if openIndex matches
-                <p className="font-body text-base text-muted-foreground mt-4 leading-relaxed">
-                  {faq.answer}
-                </p>
-              )}
+              {/* Answer is always visible */}
+              <p className="font-body text-base text-muted-foreground leading-relaxed">
+                {faq.answer}
+              </p>
             </div>
           ))}
         </div>
