@@ -25,7 +25,7 @@ export default function HeroSection() {
               <Link href="/#investment">Start Investing Now</Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="shadow-lg">
-              <Link href="/gift">Gift Gold</Link>
+              <Link href="#milestones">Gift Gold</Link>
             </Button>
           </div>
           <div className="mt-12">
