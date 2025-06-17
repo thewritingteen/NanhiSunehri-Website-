@@ -77,12 +77,25 @@ export default function AppFooter() {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-background/90">Subscribe</h4>
             <p className="text-background/70 mb-4 text-sm">Stay updated with our latest news and offers.</p>
-            <form className="mb-4"  action="https://formspree.io/f/mnnvzawj" method="POST">
-              <div className="flex">
-                <Input type="email" placeholder="Your email" className="bg-background/10 text-background placeholder-background/50 border-none rounded-r-none focus:ring-2 focus:ring-primary" />
-                <Button type="submit" variant="primary" className="rounded-l-none whitespace-nowrap">Subscribe</Button>
-              </div>
-            </form>
+           <form className="mb-4" action="https://formspree.io/f/mnnvzawj" method="POST">
+  <div className="flex">
+    <Input
+      type="email"
+      name="email"  // ✅ Add this line
+      placeholder="Your email"
+      className="bg-background/10 text-background placeholder-background/50 border-none rounded-r-none focus:ring-2 focus:ring-primary"
+      required
+    />
+    <Button
+      type="submit"
+      variant="primary"
+      className="rounded-l-none whitespace-nowrap"
+    >
+      Subscribe
+    </Button>
+  </div>
+</form>
+
             <div className="flex items-center space-x-2 text-background/70">
               <CreditCard size={20} />
               <span className="text-sm">Secure Payments</span>
