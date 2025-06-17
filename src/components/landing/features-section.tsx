@@ -21,7 +21,7 @@ const featuresData = [
     Icon: Mail,
     title: "Legacy Letters",
     description: "Write time-locked digital letters for your child to be unlocked at key ages or sunheri virasaat you choose.",
-    imageUrl: "https://placehold.co/500x300.png",
+    imageUrl: "https://media.istockphoto.com/id/499463233/photo/vintage-letters.jpg?s=612x612&w=0&k=20&c=VRPsbwHdMR-92jmUKetKYrshcuJYHf6-t1C0SmcukJI=",
     aiHint: "legacy letters child",
     listItems: [
       "Schedule letters for future birthdays",
@@ -34,7 +34,7 @@ const featuresData = [
     Icon: Gift,
     title: "Gift Registry",
     description: "Create a personalized registry where friends and family can contribute to your child's gold fund for special occasions.",
-    imageUrl: "https://placehold.co/500x300.png",
+    imageUrl: "https://www.incrediblegifts.in/wp-content/uploads/2022/08/yamt6asJHZXARO9yxoUodpDSp57IwP1i2DcItaVJ-1317x1536.jpg",
     aiHint: "gift registry gold",
     listItems: [
       "Shareable links for birthdays and events",
@@ -96,4 +96,3 @@ export default function FeaturesSection() {
     </section>
   );
 }
-
