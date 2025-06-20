@@ -1,154 +1,260 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react'; // Import useState
 import type { EChartsOption, ECharts } from 'echarts';
 import { init } from 'echarts';
 
+// Define a type for the fetched gold prices (optional but good practice)
+interface GoldPrices {
+  per_gram_inr: number;
+  per_10_gram_inr: number;
+}
+
 export default function GoldChart() {
-  // Ref to attach the ECharts instance to
   const chartRef = useRef<HTMLDivElement>(null);
-  // Ref to store the ECharts instance itself
   const chartInstance = useRef<ECharts | null>(null);
 
-  useEffect(() => {
-    const initializeChart = () => {
-      // Ensure the chart container div is available
-      if (chartRef.current) {
-        // Dispose of any existing chart instance to prevent memory leaks and re-initialization issues
-        if (chartInstance.current) {
-          chartInstance.current.dispose();
-        }
+  // State to store the fetched gold prices (or historical data for the chart)
+  const [chartData, setChartData] = useState<number[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-        // Initialize ECharts on the current div reference.
-        // Using 'light' theme and 'svg' renderer for potentially better performance/resolution.
-        chartInstance.current = init(chartRef.current, 'light', { renderer: 'svg' });
+  // Your MetalpriceAPI key
+  // IMPORTANT: For client-side rendering, it's generally NOT recommended to
+  // hardcode sensitive API keys directly in the client-side code if they
+  // grant extensive access. For a simple display API like MetalpriceAPI's
+  // free tier, it might be acceptable for personal use.
+  // For production, consider using a Next.js API route to proxy the request
+  // from your server, keeping the key secure.
+  const METALPRICE_API_KEY = '2453240d62963b8a88bf8085f5a1d453'; // <--- REPLACE THIS WITH YOUR KEY
 
-        // Define the ECharts options for the line chart
-        const option: EChartsOption = {
-          // Tooltip configuration for displaying data on hover
-          tooltip: {
-            trigger: 'axis', // Show tooltip when hovering over the axis
-            backgroundColor: 'rgba(250, 243, 233, 0.9)', // Slightly transparent background for the tooltip
-            borderColor: '#DFC58A', // Border color matching the gold theme
-            borderWidth: 1,
-            textStyle: {
-              color: '#3E2723', // Dark text for readability
-              fontFamily: 'Inter, sans-serif', // Using Inter font as per guidelines
-            },
-            padding: 10, // Padding inside the tooltip box
-          },
-          // Grid configuration to control the chart's position within its container
-          grid: {
-            left: '3%',    // Reduced left margin
-            right: '4%',   // Reduced right margin
-            bottom: '3%',  // Reduced bottom margin
-            top: '5%',     // Reduced top margin significantly as there's no title/legend above
-            containLabel: true, // Ensures axis labels are fully contained within the grid area
-          },
-          // X-axis configuration (category type for months)
-          xAxis: {
-            type: 'category',
-            boundaryGap: false, // Ensures the line starts/ends at the very edge of the axis
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // Monthly data points
-            axisLine: { lineStyle: { color: '#DFC58A', width: 1.2 } }, // Styling for the X-axis line
-            axisLabel: {
-              color: '#BA8759', // Color of X-axis labels
-              fontFamily: 'Inter, sans-serif', // Using Inter font
-              margin: 10, // Margin between labels and axis line
-            },
-          },
-          // Y-axis configuration (value type for prices)
-          yAxis: {
-            type: 'value',
-            axisLine: { show: false }, // Hide the Y-axis line
-            axisTick: { show: false }, // Hide Y-axis ticks
-            splitLine: { lineStyle: { color: '#F3E9D2', type: 'dashed' } }, // Dashed split lines for the grid
-            axisLabel: {
-              formatter: '₹{value}', // Formats Y-axis labels with Rupee symbol
-              color: '#BA8759', // Color of Y-axis labels
-              fontFamily: 'Inter, sans-serif', // Using Inter font
-              margin: 10, // Margin between labels and axis line
-            },
-          },
-          // Series configuration for the gold price line
-          series: [
-            {
-              name: 'Gold Price (per gram)', // Name of the series
-              type: 'line', // Line chart type
-              smooth: true, // Smooth line interpolation
-              symbol: 'circle', // Circle markers at data points
-              symbolSize: 6, // Size of the markers
-              lineStyle: {
-                width: 3,
-                color: '#DFC58A', // Color of the line
-              },
-              itemStyle: {
-                color: '#BA8759', // Color of the markers
-                borderColor: '#FAF3E9', // Border color for markers
-                borderWidth: 2,
-              },
-              areaStyle: {
-                // Gradient fill under the line
-                color: {
-                  type: 'linear',
-                  x: 0, y: 0, x2: 0, y2: 1, // Vertical gradient
-                  colorStops: [
-                    { offset: 0, color: '#DFC58A66' }, // Top color (with transparency)
-                    { offset: 1, color: '#FAF3E911' }  // Bottom color (more transparent)
-                  ],
-                },
-              },
-              // Sample data for gold prices
-              data: [5800, 5850, 5900, 6100, 6050, 6200, 6300, 6250, 6400, 6500, 6450, 6600],
-            },
-          ],
-          animationDuration: 1200, // Animation duration for chart appearance
-          animationEasing: 'cubicOut', // Easing function for animation
-        };
+  // Function to fetch gold price data (this would ideally fetch historical data)
+  // For this example, we'll simulate fetching a single "latest" price
+  // and then extrapolate it for demonstration, or fetch a few recent data points if your API allows.
+  const fetchGoldData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      // You mentioned you want "per gram" rates for a chart.
+      // MetalpriceAPI's 'latest' endpoint gives you the most recent price.
+      // For a *chart*, you typically need historical data (e.g., daily prices for the last year/month).
+      // MetalpriceAPI has a 'time-series' endpoint for this, but it might be a paid feature beyond the free tier.
+      // For this example, let's assume we're fetching historical data if available,
+      // or we'll mock it for now.
+      
+      // *** IMPORTANT: Adjust this URL based on your MetalpriceAPI plan for historical data ***
+      // If your free plan doesn't offer time-series, you'll need to mock or manually provide historical data.
+      const timeSeriesUrl = `https://api.metalpriceapi.com/v1/time-series?api_key=${METALPRICE_API_KEY}&start_date=2024-06-01&end_date=2025-06-20&base=INR&currencies=XAU`;
+      // For demonstration, let's fetch the LATEST price for now and manually create historical data.
+      // A more robust solution would fetch actual time-series data.
+      const latestPriceUrl = `https://api.metalpriceapi.com/v1/latest?api_key=${METALPRICE_API_KEY}&base=INR&currencies=XAU`;
 
-        // Set the defined options to the chart instance
-        chartInstance.current.setOption(option);
-        // Manually resize the chart to fit its current container size immediately after setting options
-        chartInstance.current.resize();
+
+      const response = await fetch(latestPriceUrl); // Use timeSeriesUrl if your plan supports it
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
+      const data = await response.json();
 
-    // Ensure window object is defined before interacting with it (for Next.js 'use client')
-    if (typeof window !== 'undefined') {
-      // Dynamically import ECharts to reduce initial bundle size
-      import('echarts').then(() => {
-        initializeChart(); // Initialize the chart once ECharts is loaded
-      }).catch((err) => {
-        console.error("Failed to load ECharts", err); // Log error if ECharts fails to load
-      });
+      if (data.success && data.rates && data.rates.XAU) {
+        const xauRatePerInr = data.rates.XAU; // This is XAU per 1 INR
+        const goldPriceInrPerTroyOunce = 1 / xauRatePerInr;
+        const troyOunceInGrams = 28.3495;
+        const goldPriceInrPerGram = goldPriceInrPerTroyOunce / troyOunceInGrams;
 
-      // Function to resize the chart when the window is resized
+        // --- Mocking historical data for demonstration ---
+        // In a real scenario, you'd fetch actual historical data points.
+        // For example, if you wanted 12 months, you'd make 12 API calls or use a time-series endpoint.
+        const currentPrice = round(goldPriceInrPerGram, 2);
+        // Simple mock: assume a slight increase over 12 months,
+        // with the current month being the fetched price.
+        const mockHistoricalData = Array.from({ length: 12 }, (_, i) => {
+            // Roughly simulate a past trend, assuming currentPrice is the latest (June)
+            // Example: prices were ~700 INR less 11 months ago, increasing gradually.
+            const baseValue = currentPrice - (11 - i) * 60; // 60 INR increase per month
+            return round(baseValue + (Math.random() - 0.5) * 50, 2); // Add some randomness
+        });
+        // Ensure the last data point is the fetched current price (for June)
+        mockHistoricalData[11] = currentPrice; 
+        // --- End of mocking ---
+
+
+        setChartData(mockHistoricalData);
+      } else {
+        throw new Error('Gold price data not found in API response.');
+      }
+    } catch (err) {
+      console.error("Failed to fetch gold data:", err);
+      setError("Failed to load gold price data.");
+      // Fallback to static data or empty to show error
+      setChartData([]); 
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Helper function for rounding
+  const round = (value: number, decimals: number) => {
+    return Number(Math.round(Number(value + 'e' + decimals)) + 'e-' + decimals);
+  };
+
+
+  // Effect for fetching data on component mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') { // Ensure window is defined for client-side fetch
+      fetchGoldData();
+    }
+  }, []); // Run once on mount
+
+  // Effect for initializing/updating ECharts
+  useEffect(() => {
+    // Only initialize/update if data is available and not loading/errored
+    if (!loading && !error && chartData.length > 0) {
+      const initializeChart = () => {
+        if (chartRef.current) {
+          if (chartInstance.current) {
+            chartInstance.current.dispose();
+          }
+
+          chartInstance.current = init(chartRef.current, 'light', { renderer: 'svg' });
+
+          const option: EChartsOption = {
+            tooltip: {
+              trigger: 'axis',
+              backgroundColor: 'rgba(250, 243, 233, 0.9)',
+              borderColor: '#DFC58A',
+              borderWidth: 1,
+              textStyle: {
+                color: '#3E2723',
+                fontFamily: 'Inter, sans-serif',
+              },
+              padding: 10,
+              formatter: function (params: any) {
+                const data = params[0];
+                if (data) {
+                  const date = data.name;
+                  const value = data.value;
+                  return `<div>${date}: <strong>₹${value}</strong></div>`;
+                }
+                return '';
+              }
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              top: '5%',
+              containLabel: true,
+            },
+            xAxis: {
+              type: 'category',
+              boundaryGap: false,
+              data: ['July 2024', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2025', 'Feb', 'Mar', 'Apr', 'May', 'June'], // Updated month labels for 12 months ending June 2025
+              axisLine: { lineStyle: { color: '#DFC58A', width: 1.2 } },
+              axisLabel: {
+                color: '#BA8759',
+                fontFamily: 'Inter, sans-serif',
+                margin: 10,
+                rotate: 45, // Rotate labels to prevent overlap for longer names
+                interval: 0, // Show all labels
+              },
+            },
+            yAxis: {
+              type: 'value',
+              axisLine: { show: false },
+              axisTick: { show: false },
+              splitLine: { lineStyle: { color: '#F3E9D2', type: 'dashed' } },
+              axisLabel: {
+                formatter: '₹{value}',
+                color: '#BA8759',
+                fontFamily: 'Inter, sans-serif',
+                margin: 10,
+              },
+            },
+            series: [
+              {
+                name: 'Gold Price (per gram)',
+                type: 'line',
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 6,
+                lineStyle: {
+                  width: 3,
+                  color: '#DFC58A',
+                },
+                itemStyle: {
+                  color: '#BA8759',
+                  borderColor: '#FAF3E9',
+                  borderWidth: 2,
+                },
+                areaStyle: {
+                  color: {
+                    type: 'linear',
+                    x: 0, y: 0, x2: 0, y2: 1,
+                    colorStops: [
+                      { offset: 0, color: '#DFC58A66' },
+                      { offset: 1, color: '#FAF3E911' }
+                    ],
+                  },
+                },
+                data: chartData, // Use fetched data here!
+              },
+            ],
+            animationDuration: 1200,
+            animationEasing: 'cubicOut',
+          };
+
+          chartInstance.current.setOption(option);
+          chartInstance.current.resize();
+        }
+      };
+
+      initializeChart();
+
       const resizeChart = () => {
         chartInstance.current?.resize();
       };
-
-      // Add event listener for window resize
       window.addEventListener('resize', resizeChart);
 
-      // Cleanup function:
-      // This runs when the component unmounts or before the effect re-runs.
       return () => {
-        chartInstance.current?.dispose(); // Dispose of the chart instance to clean up resources
-        window.removeEventListener('resize', resizeChart); // Remove the resize event listener
+        chartInstance.current?.dispose();
+        window.removeEventListener('resize', resizeChart);
       };
     }
-  }, []); // Empty dependency array ensures this effect runs only once after initial render
+  }, [chartData, loading, error]); // Re-run effect if chartData, loading, or error changes
+
+  if (loading) {
+    return (
+      <div className="w-full flex-grow flex items-center justify-center" style={{ minHeight: '300px' }}>
+        <p className="text-gray-600">Loading gold price chart...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full flex-grow flex items-center justify-center" style={{ minHeight: '300px' }}>
+        <p className="text-red-600">Error: {error}</p>
+        <p className="text-gray-500">Please check your API key or try again later.</p>
+      </div>
+    );
+  }
+
+  if (chartData.length === 0) {
+      return (
+          <div className="w-full flex-grow flex items-center justify-center" style={{ minHeight: '300px' }}>
+              <p className="text-gray-500">No gold price data available to display chart.</p>
+          </div>
+      );
+  }
+
 
   return (
-    // The main container for the chart.
-    // It now directly styles the chart area without a surrounding 'white box'.
     <div
-      ref={chartRef} // Attach the ref to this div for ECharts to render into
-      className="w-full flex-grow" // Take full width and allow it to grow in a flex container
+      ref={chartRef}
+      className="w-full flex-grow"
       style={{
-        minHeight: '300px', // Ensures the chart has a minimum height to be visible
-        // You can adjust this height as needed.
-        // For a fixed height, you could use 'height: 400px' instead of minHeight.
+        minHeight: '300px',
       }}
     />
   );
