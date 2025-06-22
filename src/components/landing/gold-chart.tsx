@@ -1,96 +1,43 @@
+// You might put this in a file like: src/components/gold-chart.tsx
 "use client";
 
-import { useEffect, useRef, useState } from 'react'; // Import useState
+import { useEffect, useRef, useState } from 'react';
 import type { EChartsOption, ECharts } from 'echarts';
 import { init } from 'echarts';
-
-// Define a type for the fetched gold prices (optional but good practice)
-interface GoldPrices {
-  per_gram_inr: number;
-  per_10_gram_inr: number;
-}
 
 export default function GoldChart() {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartInstance = useRef<ECharts | null>(null);
 
-  // State to store the fetched gold prices (or historical data for the chart)
   const [chartData, setChartData] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // Your MetalpriceAPI key
-  // IMPORTANT: For client-side rendering, it's generally NOT recommended to
-  // hardcode sensitive API keys directly in the client-side code if they
-  // grant extensive access. For a simple display API like MetalpriceAPI's
-  // free tier, it might be acceptable for personal use.
-  // For production, consider using a Next.js API route to proxy the request
-  // from your server, keeping the key secure.
-  const METALPRICE_API_KEY = '2453240d62963b8a88bf8085f5a1d453'; // <--- REPLACE THIS WITH YOUR KEY
+  // Hardcoded static gold prices (per gram) as per your request
+  const currentGoldPricePerGram = 102926.98; // Current price per gram (UPDATED)
+  const lastYearGoldPricePerGram = 75987.54;  // Last year's price per gram
 
-  // Function to fetch gold price data (this would ideally fetch historical data)
-  // For this example, we'll simulate fetching a single "latest" price
-  // and then extrapolate it for demonstration, or fetch a few recent data points if your API allows.
-  const fetchGoldData = async () => {
+  // Function to generate simulated historical gold data
+  const generateStaticGoldData = () => {
     setLoading(true);
-    setError(null);
-    try {
-      // You mentioned you want "per gram" rates for a chart.
-      // MetalpriceAPI's 'latest' endpoint gives you the most recent price.
-      // For a *chart*, you typically need historical data (e.g., daily prices for the last year/month).
-      // MetalpriceAPI has a 'time-series' endpoint for this, but it might be a paid feature beyond the free tier.
-      // For this example, let's assume we're fetching historical data if available,
-      // or we'll mock it for now.
-      
-      // *** IMPORTANT: Adjust this URL based on your MetalpriceAPI plan for historical data ***
-      // If your free plan doesn't offer time-series, you'll need to mock or manually provide historical data.
-      const timeSeriesUrl = `https://api.metalpriceapi.com/v1/time-series?api_key=${METALPRICE_API_KEY}&start_date=2024-06-01&end_date=2025-06-20&base=INR&currencies=XAU`;
-      // For demonstration, let's fetch the LATEST price for now and manually create historical data.
-      // A more robust solution would fetch actual time-series data.
-      const latestPriceUrl = `https://api.metalpriceapi.com/v1/latest?api_key=${METALPRICE_API_KEY}&base=INR&currencies=XAU`;
 
-
-      const response = await fetch(latestPriceUrl); // Use timeSeriesUrl if your plan supports it
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-
-      if (data.success && data.rates && data.rates.XAU) {
-        const xauRatePerInr = data.rates.XAU; // This is XAU per 1 INR
-        const goldPriceInrPerTroyOunce = 1 / xauRatePerInr;
-        const troyOunceInGrams = 28.3495;
-        const goldPriceInrPerGram = goldPriceInrPerTroyOunce / troyOunceInGrams;
-
-        // --- Mocking historical data for demonstration ---
-        // In a real scenario, you'd fetch actual historical data points.
-        // For example, if you wanted 12 months, you'd make 12 API calls or use a time-series endpoint.
-        const currentPrice = round(goldPriceInrPerGram, 2);
-        // Simple mock: assume a slight increase over 12 months,
-        // with the current month being the fetched price.
-        const mockHistoricalData = Array.from({ length: 12 }, (_, i) => {
-            // Roughly simulate a past trend, assuming currentPrice is the latest (June)
-            // Example: prices were ~700 INR less 11 months ago, increasing gradually.
-            const baseValue = currentPrice - (11 - i) * 60; // 60 INR increase per month
-            return round(baseValue + (Math.random() - 0.5) * 50, 2); // Add some randomness
-        });
-        // Ensure the last data point is the fetched current price (for June)
-        mockHistoricalData[11] = currentPrice; 
-        // --- End of mocking ---
-
-
-        setChartData(mockHistoricalData);
-      } else {
-        throw new Error('Gold price data not found in API response.');
-      }
-    } catch (err) {
-      console.error("Failed to fetch gold data:", err);
-      setError("Failed to load gold price data.");
-      // Fallback to static data or empty to show error
-      setChartData([]); 
-    } finally {
-      setLoading(false);
+    // Generate 12 data points, linearly interpolating between last year's price and current price
+    // and adding some small randomness for a more realistic look.
+    const mockHistoricalData: number[] = [];
+    for (let i = 0; i < 12; i++) {
+      // Calculate a value based on linear interpolation over 12 months
+      const interpolatedValue = lastYearGoldPricePerGram + (currentGoldPricePerGram - lastYearGoldPricePerGram) * (i / 11);
+      // Add some minor randomness
+      const valueWithRandomness = interpolatedValue + (Math.random() - 0.5) * (interpolatedValue * 0.01); // +/- 1% randomness
+      mockHistoricalData.push(round(valueWithRandomness, 2));
     }
+
+    // Ensure the first and last points exactly match the requested values
+    // The price from "last year" corresponds to the start of our 12-month chart (July 2024).
+    mockHistoricalData[0] = round(lastYearGoldPricePerGram, 2); // July 2024
+    mockHistoricalData[11] = round(currentGoldPricePerGram, 2); // June 2025
+
+    setChartData(mockHistoricalData);
+    setLoading(false);
   };
 
   // Helper function for rounding
@@ -98,18 +45,15 @@ export default function GoldChart() {
     return Number(Math.round(Number(value + 'e' + decimals)) + 'e-' + decimals);
   };
 
-
-  // Effect for fetching data on component mount
+  // Effect for generating data on component mount
   useEffect(() => {
-    if (typeof window !== 'undefined') { // Ensure window is defined for client-side fetch
-      fetchGoldData();
-    }
+    generateStaticGoldData();
   }, []); // Run once on mount
 
   // Effect for initializing/updating ECharts
   useEffect(() => {
-    // Only initialize/update if data is available and not loading/errored
-    if (!loading && !error && chartData.length > 0) {
+    // Only initialize/update if data is available and not loading
+    if (!loading && chartData.length > 0) {
       const initializeChart = () => {
         if (chartRef.current) {
           if (chartInstance.current) {
@@ -149,7 +93,8 @@ export default function GoldChart() {
             xAxis: {
               type: 'category',
               boundaryGap: false,
-              data: ['July 2024', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan 2025', 'Feb', 'Mar', 'Apr', 'May', 'June'], // Updated month labels for 12 months ending June 2025
+              // Reverted month labels to abbreviated format
+              data: ['Jul \'24', 'Aug \'24', 'Sep \'24', 'Oct \'24', 'Nov \'24', 'Dec \'24', 'Jan \'25', 'Feb \'25', 'Mar \'25', 'Apr \'25', 'May \'25', 'Jun \'25'],
               axisLine: { lineStyle: { color: '#DFC58A', width: 1.2 } },
               axisLabel: {
                 color: '#BA8759',
@@ -197,7 +142,7 @@ export default function GoldChart() {
                     ],
                   },
                 },
-                data: chartData, // Use fetched data here!
+                data: chartData, // Use generated data here!
               },
             ],
             animationDuration: 1200,
@@ -221,41 +166,32 @@ export default function GoldChart() {
         window.removeEventListener('resize', resizeChart);
       };
     }
-  }, [chartData, loading, error]); // Re-run effect if chartData, loading, or error changes
+  }, [chartData, loading]); // Re-run effect if chartData or loading changes
 
   if (loading) {
     return (
       <div className="w-full flex-grow flex items-center justify-center" style={{ minHeight: '300px' }}>
-        <p className="text-gray-600">Loading gold price chart...</p>
+        <p className="text-gray-600">Generating gold price chart...</p>
       </div>
     );
   }
-
-  if (error) {
-    return (
-      <div className="w-full flex-grow flex items-center justify-center" style={{ minHeight: '300px' }}>
-        <p className="text-red-600">Error: {error}</p>
-        <p className="text-gray-500">Please check your API key or try again later.</p>
-      </div>
-    );
-  }
-
-  if (chartData.length === 0) {
-      return (
-          <div className="w-full flex-grow flex items-center justify-center" style={{ minHeight: '300px' }}>
-              <p className="text-gray-500">No gold price data available to display chart.</p>
-          </div>
-      );
-  }
-
 
   return (
-    <div
-      ref={chartRef}
-      className="w-full flex-grow"
-      style={{
-        minHeight: '300px',
-      }}
-    />
+    <div className="w-full max-w-2xl mx-auto p-4">
+      <div
+        ref={chartRef}
+        className="w-full"
+        style={{
+          minHeight: '350px', // Increased height for better visibility
+          height: '40vh', // Responsive height
+        }}
+      />
+      {/* Disclaimer below the chart */}
+      <div className="mt-6 p-3 bg-red-100 text-red-700 border border-red-300 rounded-md text-sm text-center font-medium">
+        <p>
+          **Important Disclaimer:** This chart displays **fake** data for demonstration purposes only. It should not be used for any financial decisions. Nanhi Sunehri is not responsible for any financial loss incurred based on this information.
+        </p>
+      </div>
+    </div>
   );
 }
