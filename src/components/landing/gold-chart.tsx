@@ -189,7 +189,7 @@ export default function GoldChart() {
       {/* Disclaimer below the chart */}
       <div className="mt-6 p-3 bg-red-100 text-red-700 border border-red-300 rounded-md text-sm text-center font-medium">
         <p>
-          **Important Disclaimer:** This chart displays **fake** data for demonstration purposes only. It should not be used for any financial decisions. Nanhi Sunehri is not responsible for any financial loss incurred based on this information.
+          **Important Disclaimer:** This chart displays **fake** data for demonstration purposes only. It should not be used for any financial decisions. 
         </p>
       </div>
     </div>
