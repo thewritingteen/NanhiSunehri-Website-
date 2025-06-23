@@ -32,7 +32,7 @@ export default function LegacyLettersPage() {
           <ul className="list-disc list-inside text-left text-muted-foreground mb-6 space-y-2">
             <li>Schedule letters for future birthdays, graduations, or other important dates.</li>
             <li>Include photos, videos, and audio messages to make them even more personal.</li>
-            <li>Bank-level encryption ensures your messages remain private and secure.</li>
+            <li>End-to-end encryption ensures your messages remain private and secure.</li>
             <li>A beautiful way to pass on family stories and values.</li>
           </ul>
           <p className="font-semibold text-primary">Craft your messages of love today.</p>
