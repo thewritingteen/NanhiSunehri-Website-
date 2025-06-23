@@ -14,7 +14,6 @@ export default function HomePage() {
       <MilestonesSection />
       <FeaturesSection />
       <TrustSection />
-      <PricingSection />
       <CtaSection />
     </>
   );
