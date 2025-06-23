@@ -26,7 +26,7 @@ const featuresData = [
     listItems: [
       "Schedule letters for future birthdays",
       "Include photos, videos, and audio messages",
-      "Bank-level encryption and security",
+      "End-to-end encryption and security",
     ],
     href: "/legacy-letters",
   },
@@ -50,7 +50,7 @@ export default function FeaturesSection() {
     <section id="features" className="py-16 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Subscription Plan Features</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Unique Features</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             More than just gold nanhi tijori. Create memories, document sunheri virasaat, and build a legacy for your child.
           </p>
