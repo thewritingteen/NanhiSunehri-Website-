@@ -13,7 +13,6 @@ const navLinks = [
   { href: '/digital-journal', label: 'Digital Journal' },
   { href: '/legacy-letters', label: 'Legacy Letters' },
   { href: '/gift-registry', label: 'Gift Registry' },
-  { href: '/#pricing', label: 'Pricing' },
 ];
 
 export default function AppNavbar() {
