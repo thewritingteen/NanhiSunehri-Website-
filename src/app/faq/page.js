@@ -19,8 +19,8 @@ export default function FAQPage() {
       answer: "We combine fintech innovation with Indian tradition—offering milestone-based jewelry tracking, personalized baby journals, secure gold lockers, and regional language support for a truly family-first experience."
     },
     {
-      question: "Is Nanhi Sunehri a safe and registered platform?",
-      answer: "Absolutely. Nanhi Sunehri™ partners only with RBI-licensed, SEBI-compliant, and BIS-certified providers to ensure every investment is authentic, secure, and traceable. Your trust is our priority."
+      question: "Is Nanhi Sunehri a safe  platform?",
+      answer: "Absolutely. Nanhi Sunehri™ partners only with BIS-certified providers to ensure every investment is authentic, secure, and traceable. Your trust is our priority."
     }
   ];
 
