@@ -6,7 +6,6 @@ import { ShieldCheck, Landmark, Lock, Vault, CreditCard, BadgeCheck } from 'luci
 
 const securityFeatures = [
   { Icon: ShieldCheck, title: "100% Insured Gold", description: "Every gram of gold is fully insured against theft, damage, or loss." },
-  { Icon: Landmark, title: "Regulatory Compliance", description: "We adhere to all RBI and SEBI guidelines for digital gold investments." },
   { Icon: Lock, title: "Bank-Grade Encryption", description: "256-bit encryption for all transactions and personal data." },
   { Icon: Vault, title: "Physical Gold Backing", description: "Every digital gram is backed by physical gold stored in secure vaults." },
 ];
