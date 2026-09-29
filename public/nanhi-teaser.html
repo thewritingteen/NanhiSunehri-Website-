@@ -108,6 +108,10 @@ body { background:#14100B; margin:0; display:flex; flex-direction:column; align-
 .hscroll .chip{ flex:0 0 auto; }
 
 
+/* teaser: always full-bleed, no demo chrome */
+body{ padding:0; }
+.crumb{ display:none !important; }
+.phone{ width:390px !important; height:844px !important; margin-left:-195px !important; border:none !important; border-radius:0 !important; box-shadow:none !important; }
 /* teaser gate */
 #ns-pill{ position:absolute; top:66px; left:50%; transform:translateX(-50%); background:#FFFDF8; border:1.5px solid #C79A3B; color:#33241A; font-size:11px; font-weight:600; padding:5px 12px; border-radius:999px; z-index:55; box-shadow:0 4px 14px rgba(120,80,10,.18); white-space:nowrap; }
 #ns-lock{ position:absolute; inset:0; z-index:60; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:36px 30px; background:linear-gradient(172deg,#EDBA4B 0%,#F5D67B 42%,#F9EBC4 76%,#F7F1E4 100%); }
@@ -1111,12 +1115,28 @@ window.addEventListener('load',()=>{
 
 <script>
 /* ===== TEASER GATE (teaser build only) =====
-   WAITLIST_URL: where the lock button sends people.
-   If the signup form sits on the same page as this embed, use that section's anchor (e.g. '#join'). */
+   NS_WAITLIST_URL: the site's signup section. Matches the homepage signup form anchor (#launch-list); change here if the site anchor changes. */
 var NS_WAITLIST_URL = 'https://nanhisunehri.com/#launch-list';
+/* teaser fit: fill any window/iframe edge-to-edge at every width */
+function fit(){
+  var W=390, H=844;
+  var s=Math.min(window.innerWidth/W, window.innerHeight/H);
+  var ph=document.querySelector('.phone');
+  ph.style.transform='scale('+s+')';
+  var st=document.querySelector('.stage');
+  st.style.width=(W*s)+'px';
+  st.style.height=(H*s)+'px';
+}
 (function(){
   var LIMIT=30, WARN=10, KEY='ns_teaser_locked';
   var started=false, remaining=LIMIT, pill=null, iv=null, locked=false;
+  function fmt(r){ return '0:'+String(r).padStart(2,'0'); }
+  function showPill(){
+    if(pill) return;
+    var ph=document.querySelector('.phone'); if(!ph) return;
+    pill=document.createElement('div'); pill.id='ns-pill';
+    ph.appendChild(pill);
+  }
   function lock(){
     if(locked) return; locked=true;
     try{ localStorage.setItem(KEY,'1'); }catch(e){}
@@ -1135,18 +1155,15 @@ var NS_WAITLIST_URL = 'https://nanhisunehri.com/#launch-list';
     var b=document.getElementById('ns-lock-btn');
     b.addEventListener('click', function(ev){ ev.stopPropagation(); window.top.location.href = NS_WAITLIST_URL; });
   }
-  function showPill(){
-    if(pill) return;
-    var ph=document.querySelector('.phone'); if(!ph) return;
-    pill=document.createElement('div'); pill.id='ns-pill';
-    document.querySelector('.phone').appendChild(pill);
-  }
   function tick(){
     remaining--;
     if(remaining<=0){ lock(); return; }
-    if(remaining<=WARN){ showPill(); pill.textContent='Preview locks in 0:'+String(remaining).padStart(2,'0'); }
+    if(remaining<=WARN){ showPill(); pill.textContent='Preview locks in '+fmt(remaining); }
   }
-  function start(){ if(started||locked) return; started=true; iv=setInterval(tick,1000); }
+  function start(){
+    if(started||locked) return; started=true;
+    iv=setInterval(tick,1000);
+  }
   var was=false;
   try{ was = localStorage.getItem(KEY)==='1'; }catch(e){}
   if(was){ lock(); return; }
