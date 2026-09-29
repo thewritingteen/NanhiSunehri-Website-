@@ -68,8 +68,8 @@ export default function App() {
         <Features />
         <HowItWorks />
         <About />
-        <section style={{display:'flex',justifyContent:'center',padding:'40px 16px'}}>
-  <iframe src="/nanhi-teaser.html" style={{width:'100%',maxWidth:430,height:860,border:0,borderRadius:24,boxShadow:'0 24px 60px rgba(51,36,26,.25)'}} title="Nanhi Sunehri app preview" loading="lazy"></iframe>
+      <section style={{display:'flex',justifyContent:'center',padding:'24px 16px'}}>
+  <iframe src="/nanhi-teaser.html" style={{width:'100%',maxWidth:430,aspectRatio:'390/844',maxHeight:'88vh',border:0,borderRadius:24,boxShadow:'0 24px 60px rgba(51,36,26,.25)'}} title="Nanhi Sunehri app preview" loading="lazy"></iframe>
 </section>
         <LaunchForm />
       </main>
